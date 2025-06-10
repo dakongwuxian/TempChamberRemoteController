@@ -13,7 +13,7 @@ Therefore, it is necessary to confirm before using it.
 ChamCtrl.exe是一个可以单独运行的GUI软件，用python编写和打包。作者为吴宪，反馈邮箱为xian.wu@ericsson.com或dakongwuxian@gmail.com。
 
 该软件的功能有：
-连接D6的温箱，获取当前的状态、温度，设置温箱的温度，指定（时间-温度）坐标的折线图，预览折线图，保存折线图设定，让温箱以折线图的指定值变温运行。
+连接内网指定IP的温箱，获取当前的状态、温度，设置温箱的温度，指定（时间-温度）坐标的折线图，预览折线图，保存折线图设定，让温箱以折线图的指定值变温运行。
 
 如果温箱的IP地址发生了变化，也可以手动输入IP地址。
 
