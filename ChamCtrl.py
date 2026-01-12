@@ -1,23 +1,23 @@
-# -*- coding: gbk-*-
+# -*- coding: utf-8 -*-
 """
-°æÈ¨ËùÓĞ (c) 2025 [ÎâÏÜ]
+ç‰ˆæƒæ‰€æœ‰ (c) 2025 [å´å®ª]
 
-±¾Èí¼şChamCtrl£¨ÒÔÏÂ¼ò³Æ¡°Èí¼ş¡±£©Îª¸öÈË·ÇÉÌÒµÓÃÍ¾¿ªÔ´·¢²¼¡£ÈÎºÎÈË¾ù¿ÉÃâ·ÑÊ¹ÓÃ¡¢¸´ÖÆ¡¢ĞŞ¸ÄºÍ·Ö·¢±¾Èí¼ş£¬µ«½öÏŞÓÚ¸öÈË·ÇÉÌÒµÓÃÍ¾¡£
-¶ÔÓÚÉÌÒµÓÃÍ¾£¨°üÀ¨µ«²»ÏŞÓÚÇ¶ÈëÉÌÒµ²úÆ·¡¢Ìá¹©ÉÌÒµ·şÎñ¡¢ÓªÀû·Ö·¢µÈ£©£¬±ØĞëÊÂÏÈ»ñµÃ×÷ÕßµÄÊéÃæĞí¿É¡£
+æœ¬è½¯ä»¶ChamCtrlï¼ˆä»¥ä¸‹ç®€ç§°â€œè½¯ä»¶â€ï¼‰ä¸ºä¸ªäººéå•†ä¸šç”¨é€”å¼€æºå‘å¸ƒã€‚ä»»ä½•äººå‡å¯å…è´¹ä½¿ç”¨ã€å¤åˆ¶ã€ä¿®æ”¹å’Œåˆ†å‘æœ¬è½¯ä»¶ï¼Œä½†ä»…é™äºä¸ªäººéå•†ä¸šç”¨é€”ã€‚
+å¯¹äºå•†ä¸šç”¨é€”ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºåµŒå…¥å•†ä¸šäº§å“ã€æä¾›å•†ä¸šæœåŠ¡ã€è¥åˆ©åˆ†å‘ç­‰ï¼‰ï¼Œå¿…é¡»äº‹å…ˆè·å¾—ä½œè€…çš„ä¹¦é¢è®¸å¯ã€‚
 
-±¾Èí¼ş°´¡°ÏÖ×´¡±Ìá¹©£¬²»¸½´øÈÎºÎÃ÷Ê¾»ò°µÊ¾µÄµ£±££¬°üÀ¨µ«²»ÏŞÓÚ¶ÔÊÊÏúĞÔ¡¢ÌØ¶¨ÓÃÍ¾ÊÊÓÃĞÔÒÔ¼°²»ÇÖÈ¨µÄ±£Ö¤¡£
-ÔÚÈÎºÎÇé¿öÏÂ£¬×÷Õß¾ù²»¶ÔÒòÊ¹ÓÃ»òÎŞ·¨Ê¹ÓÃ±¾Èí¼ş¶ø²úÉúµÄÈÎºÎÖ±½Ó¡¢¼ä½Ó¡¢Å¼È»¡¢ÌØÊâ»òºóĞøËğº¦³Ğµ£ÔğÈÎ¡£
+æœ¬è½¯ä»¶æŒ‰â€œç°çŠ¶â€æä¾›ï¼Œä¸é™„å¸¦ä»»ä½•æ˜ç¤ºæˆ–æš—ç¤ºçš„æ‹…ä¿ï¼ŒåŒ…æ‹¬ä½†ä¸é™äºå¯¹é€‚é”€æ€§ã€ç‰¹å®šç”¨é€”é€‚ç”¨æ€§ä»¥åŠä¸ä¾µæƒçš„ä¿è¯ã€‚
+åœ¨ä»»ä½•æƒ…å†µä¸‹ï¼Œä½œè€…å‡ä¸å¯¹å› ä½¿ç”¨æˆ–æ— æ³•ä½¿ç”¨æœ¬è½¯ä»¶è€Œäº§ç”Ÿçš„ä»»ä½•ç›´æ¥ã€é—´æ¥ã€å¶ç„¶ã€ç‰¹æ®Šæˆ–åç»­æŸå®³æ‰¿æ‹…è´£ä»»ã€‚
 
-ÈçĞèÉÌÒµÊÚÈ¨»òÓĞÈÎºÎÒÉÎÊ£¬ÇëÁªÏµ£º[dakongwuxian@gmail.com]
+å¦‚éœ€å•†ä¸šæˆæƒæˆ–æœ‰ä»»ä½•ç–‘é—®ï¼Œè¯·è”ç³»ï¼š[dakongwuxian@gmail.com]
 """
 
 import struct
 import numpy
-import numpy as np
 import select
 import glob
 import math
 import os
+import sys
 import configparser
 import socket
 import re
@@ -28,6 +28,7 @@ from time import sleep
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from tkinter.scrolledtext import ScrolledText
+from PIL import Image, ImageTk
 
 import matplotlib
 matplotlib.use('TkAgg')
@@ -39,7 +40,7 @@ import matplotlib.dates as mdates
 
 from matplotlib.ticker import MultipleLocator
 from matplotlib.dates import DayLocator, MinuteLocator, DateFormatter, HourLocator
-
+from version_info import VERSION
 
 class Chamber:
     def __init__(self, ip, port):
@@ -52,26 +53,26 @@ class Chamber:
     def connect(self):
         if self.connected and self.tcp_client:
             try:
-                # ¼òµ¥µØ³¢ÊÔ·¢ËÍÒ»¸ö¿Õ×Ö½Ú´®ÒÔÑéÖ¤Á¬½ÓÊÇ·ñÈÔÈ»ÓĞĞ§
-                # ¸ü½¡×³µÄÊµÏÖ»áÊ¹ÓÃModbusÕï¶Ï¹¦ÄÜ
-                # ÔİÊ±±£³Ö´Ë¼òµ¥µÄÁ¬½Ó×´Ì¬ÑéÖ¤
+                # ç®€å•åœ°å°è¯•å‘é€ä¸€ä¸ªç©ºå­—èŠ‚ä¸²ä»¥éªŒè¯è¿æ¥æ˜¯å¦ä»ç„¶æœ‰æ•ˆ
+                # æ›´å¥å£®çš„å®ç°ä¼šä½¿ç”¨Modbusè¯Šæ–­åŠŸèƒ½
+                # æš‚æ—¶ä¿æŒæ­¤ç®€å•çš„è¿æ¥çŠ¶æ€éªŒè¯
                 self.tcp_client.send(b'') 
                 return True
             except (socket.error, OSError):
-                self.close() # Á¬½Ó¶ªÊ§£¬ÖØÖÃ×´Ì¬
+                self.close() # è¿æ¥ä¸¢å¤±ï¼Œé‡ç½®çŠ¶æ€
                 pass
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(self.timeout)
             sock.connect((self.ip, self.port))
             self.tcp_client = sock
-            self.connected = True  # ¸üĞÂÁ¬½Ó×´Ì¬
+            self.connected = True  # æ›´æ–°è¿æ¥çŠ¶æ€
             print(f"Successfully connected to {self.ip}:{self.port}")
             return True
         except Exception as e:
             print(f"Connect fail: {e}")
             self.tcp_client = None
-            self.connected = False  # ¸üĞÂÁ¬½Ó×´Ì¬
+            self.connected = False  # æ›´æ–°è¿æ¥çŠ¶æ€
             return False
 
     def close(self):
@@ -81,23 +82,10 @@ class Chamber:
             self.connected = False
             print("Chamber connection closed.")
 
-    '''def send_cmd(self, cmd, timeout=0.5):
-        if not self.connect():
-            return ""
-        try:
-            self.tcp_client.sendall((cmd + "\r\n").encode('utf-8'))
-            ready, _, _ = select.select([self.tcp_client], [], [], timeout)
-            if not ready:
-                return ""  # ³¬Ê±£¬Ã»ÓĞÓ¦´ğ
-            return self.tcp_client.recv(512).decode()
-        except Exception as e:
-            print(f"Command fail: {e}")
-            return ""'''
-
     def get_run_status(self):
         """
-        Ê¹ÓÃ Modbus FC=03 ¶ÁÈ¡ÔËĞĞ×´Ì¬¡£
-        Éè±¸ÔËĞĞ×´Ì¬µØÖ·Îª400£¬16½øÖÆÎª00H C8H£¬³¤¶ÈÎª1¸ö×Ö¡£ [cite: 3]
+        ä½¿ç”¨ Modbus FC=03 è¯»å–è¿è¡ŒçŠ¶æ€ã€‚
+        è®¾å¤‡è¿è¡ŒçŠ¶æ€åœ°å€ä¸º400ï¼Œ16è¿›åˆ¶ä¸º00H C8Hï¼Œé•¿åº¦ä¸º1ä¸ªå­—ã€‚ [cite: 3]
         """
         read_header = b"\x00\x00\x00\x00\x00\x06\x01"
         command_code = b"\x03"
@@ -110,7 +98,7 @@ class Chamber:
         read_response = self._send_modbus_request(command_to_send)
 
         if read_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(read_response) == 11:
                 if read_response[:10] !=  b"\x00\x00\x00\x00\x00\x05\x01\x03\x02\x00":
                     return None
@@ -123,6 +111,11 @@ class Chamber:
                     return None
 
     def set_run_status(self,target_status):
+        status_map = {
+        0: "STOP",
+        1: "RUN",
+        2: "PAUSE"
+                }
         write_header_1 = b"\x00\x00\x00\x00\x00"
         command_len = b"\x09"
         write_header_2 = b"\x01"
@@ -138,17 +131,12 @@ class Chamber:
         write_response = self._send_modbus_request(command_to_send)
 
         if write_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(write_response) == 12:
                 if write_response[:11] !=  b"\x00\x00\x00\x00\x00\x06\x01\x10\x00\xC8\x00":   # 00 00 00 00 00 06 01 10 00 C8 00 01
                     return False
                 if write_response[11]!=target_status_byte[1]:
                     return False
-                status_map = {
-                        0: "STOP",
-                        1: "RUN",
-                        2: "PAUSE"
-                }
                 print(f"Set run status to {target_status}: {status_map.get(target_status, 'UNKNOWN')}.\n")
                 messagebox.showinfo("Run Status Set Pass", f"Set {target_status}: {status_map.get(target_status, 'UNKNOWN')} Pass.")
                 return True 
@@ -158,8 +146,8 @@ class Chamber:
 
     def get_run_type(self):
         """
-        Ê¹ÓÃ Modbus FC=03 ¶ÁÈ¡ÔËĞĞ×´Ì¬¡£
-        Éè±¸ÔËĞĞ×´Ì¬µØÖ·Îª400£¬16½øÖÆÎª00H C8H£¬³¤¶ÈÎª1¸ö×Ö¡£ [cite: 3]
+        ä½¿ç”¨ Modbus FC=03 è¯»å–è¿è¡ŒçŠ¶æ€ã€‚
+        è®¾å¤‡è¿è¡ŒçŠ¶æ€åœ°å€ä¸º400ï¼Œ16è¿›åˆ¶ä¸º00H C8Hï¼Œé•¿åº¦ä¸º1ä¸ªå­—ã€‚ [cite: 3]
         """
         read_header = b"\x00\x00\x00\x00\x00\x06\x01"
         command_code = b"\x03"
@@ -172,7 +160,7 @@ class Chamber:
         read_response = self._send_modbus_request(command_to_send)
 
         if read_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(read_response) == 11:
                 if read_response[:10] !=  b"\x00\x00\x00\x00\x00\x05\x01\x03\x02\x00":
                     return None
@@ -202,15 +190,15 @@ class Chamber:
         write_response = self._send_modbus_request(command_to_send)
 
         if write_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(write_response) == 12:
                 if write_response !=  b"\x00\x00\x00\x00\x00\x06\x01\x10\x00\xCA\x00\x01":   # 00 00 00 00 00 06 01 10 00 CA 00 01
                     return False
                 status_map = {
                         0: "Constant Temp",
-                        1: "Viarable Temp",
+                        1: "Variable Temp",
                         2: "Constant Humidity",
-                        3: "Viarable Humidity"
+                        3: "Variable Humidity"
                 }
                 print(f"Set run type to {run_type}: {status_map.get(run_type, 'UNKNOWN')}.\n")
                 if run_type !=0:
@@ -260,8 +248,8 @@ class Chamber:
 
     def get_temp(self):
         """
-        Ê¹ÓÃ Modbus FC=03 ¶ÁÈ¡ÏäÌåÎÂ¶È¡£
-        ÎÂ¶È²âÁ¿ÖµµØÖ·Îª320£¬16½øÖÆÎª00H A0H£¬³¤¶ÈÎª2¸ö×Ö¡£ [cite: 4]
+        ä½¿ç”¨ Modbus FC=03 è¯»å–ç®±ä½“æ¸©åº¦ã€‚
+        æ¸©åº¦æµ‹é‡å€¼åœ°å€ä¸º320ï¼Œ16è¿›åˆ¶ä¸º00H A0Hï¼Œé•¿åº¦ä¸º2ä¸ªå­—ã€‚ [cite: 4]
         """
         read_header = b"\x00\x00\x00\x00\x00\x06\x01"
         command_code = b"\x03"
@@ -274,11 +262,11 @@ class Chamber:
         read_response = self._send_modbus_request(command_to_send)
 
         if read_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(read_response) == 13:
                 if read_response[:9] !=  b"\x00\x00\x00\x00\x00\x07\x01\x03\x04":  
                     return 'Error'
-                value_byte = read_response[9:13] # Õâ¸ö[9:13]Ö»»áÈ¡µÚ 10 11 12 13×Ö½Ú£¬´Ó9¿ªÊ¼È¡µ½12£¬²»°üº¬13
+                value_byte = read_response[9:13] # è¿™ä¸ª[9:13]åªä¼šå–ç¬¬ 10 11 12 13å­—èŠ‚ï¼Œä»9å¼€å§‹å–åˆ°12ï¼Œä¸åŒ…å«13
 
                 temp_float_value = Chamber.hb4_to_float(value_byte[0],value_byte[1],value_byte[2],value_byte[3]) 
                 print(f"Read temp registers: {value_byte[0],value_byte[1],value_byte[2],value_byte[3]}")
@@ -289,7 +277,7 @@ class Chamber:
 
     def get_target_temp(self):
         """
-        Ê¹ÓÃ Modbus FC=03 ¶ÁÈ¡ÏäÌåÉè¶¨ÎÂ¶È¡£
+        ä½¿ç”¨ Modbus FC=03 è¯»å–ç®±ä½“è®¾å®šæ¸©åº¦ã€‚
         """
         read_header = b"\x00\x00\x00\x00\x00\x06\x01"
         command_code = b"\x03"
@@ -302,11 +290,11 @@ class Chamber:
         read_response = self._send_modbus_request(command_to_send)
 
         if read_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(read_response) == 13:
                 if read_response[:9] !=  b"\x00\x00\x00\x00\x00\x07\x01\x03\x04":  
                     return 'Error'
-                value_byte = read_response[9:13] # Õâ¸ö[9:13]Ö»»áÈ¡µÚ 10 11 12 13×Ö½Ú£¬´Ó9¿ªÊ¼È¡µ½12£¬²»°üº¬13
+                value_byte = read_response[9:13] # è¿™ä¸ª[9:13]åªä¼šå–ç¬¬ 10 11 12 13å­—èŠ‚ï¼Œä»9å¼€å§‹å–åˆ°12ï¼Œä¸åŒ…å«13
 
                 temp_float_value = Chamber.hb4_to_float(value_byte[0],value_byte[1],value_byte[2],value_byte[3]) 
                 print(f"Read target temp register: {value_byte[0],value_byte[1],value_byte[2],value_byte[3]}")
@@ -317,8 +305,8 @@ class Chamber:
 
     def set_temp(self, temp_value):
         """
-        Ê¹ÓÃ Modbus FC=10 ÉèÖÃÏäÌåÎÂ¶È¡£
-        Éè±¸ÎÂ¶È¸ø¶¨ÖµµØÖ·Îª3484£¬16½øÖÆÎª06H CEH£¬³¤¶ÈÎª2¸ö×Ö¡£ [cite: 5, 29]
+        ä½¿ç”¨ Modbus FC=10 è®¾ç½®ç®±ä½“æ¸©åº¦ã€‚
+        è®¾å¤‡æ¸©åº¦ç»™å®šå€¼åœ°å€ä¸º3484ï¼Œ16è¿›åˆ¶ä¸º06H CEHï¼Œé•¿åº¦ä¸º2ä¸ªå­—ã€‚ [cite: 5, 29]
         """
         write_header_1 = b"\x00\x00\x00\x00\x00"
         command_len = b"\x0B"
@@ -332,28 +320,28 @@ class Chamber:
         command_to_send = write_header_1 + command_len + write_header_2 + command_code + reg_address + write_length + write_bytes_num + write_value
         print('Set temp command\n'+command_to_send.hex()+'\n')
 
-        write_response = Chamber._send_modbus_request(self,command_to_send)
+        write_response = self._send_modbus_request(command_to_send)
 
         if write_response:
-            # ½âÎöÏìÓ¦Êı¾İ²¿·Ö
+            # è§£æå“åº”æ•°æ®éƒ¨åˆ†
             if len(write_response) == 12:
                 if write_response !=  b"\x00\x00\x00\x00\x00\x06\x01\x10\x06\xCE\x00\x02":   # 00 00 00 00 00 06 01 10 06 CE 00 02
                     return False
-                print(f"Set temperature to {temp_value}¡ãC.")
+                print(f"Set temperature to {temp_value}Â°C.")
                 return True 
-        print(f"Failed to set temperature¡ãC.")
+        print(f"Failed to set temperatureÂ°C.")
         return False
 
-        # --- Modbus ¸¨Öúº¯Êı ---------------------------------------------------------------------
+        # --- Modbus è¾…åŠ©å‡½æ•° ---------------------------------------------------------------------
  
     def _send_modbus_request(self, request_adu, timeout=0.5):
-        """·¢ËÍ Modbus ADU ²¢½ÓÊÕÏìÓ¦¡£"""
+        """å‘é€ Modbus ADU å¹¶æ¥æ”¶å“åº”ã€‚"""
         if not self.connect():
             return None
         try:
             self.tcp_client.sendall(request_adu)
             #self.tcp_client.sendall((request_adu+ "\r\n").encode('utf-8'))
-            # Ê¹ÓÃ select µÈ´ıÊı¾İ£¬´ø³¬Ê±
+            # ä½¿ç”¨ select ç­‰å¾…æ•°æ®ï¼Œå¸¦è¶…æ—¶
             ready, _, _ = select.select([self.tcp_client], [], [], timeout)
             if not ready:
                 print("Modbus response timeout.")
@@ -363,7 +351,7 @@ class Chamber:
             print(f"Command fail: {e}")
             return ""
 
-# ´Ë¶Î¿Õ°×ÓÃÒÔ·Ö¿ªÃæ°åºÍº¯Êı ---------------------------------------------------------------------------------------------------------------
+# æ­¤æ®µç©ºç™½ç”¨ä»¥åˆ†å¼€é¢æ¿å’Œå‡½æ•° ---------------------------------------------------------------------------------------------------------------
 
 
 
@@ -379,7 +367,7 @@ class Chamber:
 
 
 
-# ´Ë¶Î¿Õ°×ÓÃÒÔ·Ö¿ªÃæ°åºÍº¯Êı ---------------------------------------------------------------------------------------------------------------
+# æ­¤æ®µç©ºç™½ç”¨ä»¥åˆ†å¼€é¢æ¿å’Œå‡½æ•° ---------------------------------------------------------------------------------------------------------------
 
 class ChamberGUI(tk.Tk):
     def __init__(self):
@@ -388,29 +376,30 @@ class ChamberGUI(tk.Tk):
         self.geometry("850x700")
         self.protocol("WM_DELETE_WINDOW", self.on_close)
 
-        # ´´½¨²Ëµ¥À¸
+        # åˆ›å»ºèœå•æ 
         self.menu_bar = tk.Menu(self)
         self.config(menu=self.menu_bar)
 
-        # About ²Ëµ¥
+        # About èœå•
         self.about_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.menu_bar.add_cascade(label="About", menu=self.about_menu)
         self.about_menu.add_command(label="Developed by Xian Wu", state="disabled")
         self.about_menu.add_command(label="dakongwuxian@gmail.com", state="disabled")
-        self.about_menu.add_command(label="vesion 20250929", state="disabled")
+        self.about_menu.add_command(label=VERSION, state="disabled")
+        self.about_menu.add_command(label="Buy me a coffee â˜•",command=self.show_about_window,state="normal")
 
-        # ÈÕÖ¾ÎÄ¼şÂ·¾¶
+        # æ—¥å¿—æ–‡ä»¶è·¯å¾„
         self.log_path = "ChamCtrlLog.txt"
         self.log_file = open(self.log_path, "a+", encoding="utf-8")
 
-        # 1. ´´½¨²¢·ÅÖÃ Matplotlib Í¼±í
+        # 1. åˆ›å»ºå¹¶æ”¾ç½® Matplotlib å›¾è¡¨
         self.figure = Figure(figsize=(8, 4), dpi=100)
         self.ax = self.figure.add_subplot(111)
         #self.ax.set_title("Temp Wave")
         self.ax.set_xlabel("Time")
-        self.ax.set_ylabel("Temperature /¡ãC")
+        self.ax.set_ylabel("Temperature /Â°C")
 
-        # 2. ÉèÖÃ X ÖáÎª 24 Ğ¡Ê±¿ç¶È£¬¾ÓÖĞÔÚµ±Ç°Ê±¿Ì
+        # 2. è®¾ç½® X è½´ä¸º 24 å°æ—¶è·¨åº¦ï¼Œå±…ä¸­åœ¨å½“å‰æ—¶åˆ»
         #now = dt.datetime.now()
         #self.ax.set_xlim(now - timedelta(hours=12), now + timedelta(hours=12))
         #self.ax.set_ylim(-50, 140)
@@ -424,7 +413,7 @@ class ChamberGUI(tk.Tk):
         # keep a persistent PathCollection for the blue scatter, initially empty:
         self.data_scatter = self.ax.scatter([], [], s=10, color='blue')
 
-        # ¡ª¡ª ½ûÓÃ×Ô¶¯Ëõ·Å£¬ºóĞøµ÷ÓÃ scatter ²»»á¸Ä±ä xlim/ylim ¡ª¡ª 
+        # â€”â€” ç¦ç”¨è‡ªåŠ¨ç¼©æ”¾ï¼Œåç»­è°ƒç”¨ scatter ä¸ä¼šæ”¹å˜ xlim/ylim â€”â€” 
         self.ax.set_autoscale_on(False)
 
         self._hour_locator = HourLocator(interval=1)
@@ -432,7 +421,7 @@ class ChamberGUI(tk.Tk):
         self.ax.xaxis.set_minor_locator(self._minor_locator)
         self.ax.xaxis.set_minor_formatter(DateFormatter('%H:%M'))
 
-        # µ÷ÓÃÒ»´Î£¬ÅäÖÃ Locator ºÍ Grid
+        # è°ƒç”¨ä¸€æ¬¡ï¼Œé…ç½® Locator å’Œ Grid
         self.setup_axis()
 
         self.canvas = FigureCanvasTkAgg(self.figure, master=self)
@@ -440,73 +429,73 @@ class ChamberGUI(tk.Tk):
 
         #self.update_minor_locator()
 
-        # °ó¶¨Êó±êµã»÷ÊÂ¼ş
+        # ç»‘å®šé¼ æ ‡ç‚¹å‡»äº‹ä»¶
         self.canvas.mpl_connect('button_press_event', self.on_plot_click)
 
-        # °ó¶¨¹öÂÖÊÂ¼ş
+        # ç»‘å®šæ»šè½®äº‹ä»¶
         self.canvas.mpl_connect('scroll_event', self.on_scroll)
 
-        # ¸¸ÈİÆ÷£¬ÓÃÀ´×° btn_frame ºÍ ctrl_frame
+        # çˆ¶å®¹å™¨ï¼Œç”¨æ¥è£… btn_frame å’Œ ctrl_frame
         top_frame = ttk.Frame(self)
         top_frame.pack(fill=tk.X, padx=10, pady=5)
 
-        # °´Å¥ÇøÓò
-        # °´Å¥ Frame£¨×ó²à£©
+        # æŒ‰é’®åŒºåŸŸ
+        # æŒ‰é’® Frameï¼ˆå·¦ä¾§ï¼‰
         btn_frame = ttk.Frame(top_frame)
         btn_frame.pack(side=tk.LEFT, fill=tk.Y,padx=(0,20))
 
-        # Y Öá°´Å¥
-        ttk.Label(btn_frame, text="Y Axis£º").grid(row=0, column=0, padx=5)
+        # Y è½´æŒ‰é’®
+        ttk.Label(btn_frame, text="Y Axisï¼š").grid(row=0, column=0, padx=5)
         ttk.Button(btn_frame, text="+", command=self.zoom_y_in).grid(row=0, column=1)
         ttk.Button(btn_frame, text="-", command=self.zoom_y_out).grid(row=0, column=2)
-        ttk.Button(btn_frame, text="¡ü", command=self.pan_y_up).grid(row=0, column=3)
-        ttk.Button(btn_frame, text="¡ı", command=self.pan_y_down).grid(row=0, column=4)
+        ttk.Button(btn_frame, text="â†‘", command=self.pan_y_up).grid(row=0, column=3)
+        ttk.Button(btn_frame, text="â†“", command=self.pan_y_down).grid(row=0, column=4)
 
-        # X Öá°´Å¥
-        ttk.Label(btn_frame, text="X Axis£º").grid(row=1, column=0, padx=5)
+        # X è½´æŒ‰é’®
+        ttk.Label(btn_frame, text="X Axisï¼š").grid(row=1, column=0, padx=5)
         ttk.Button(btn_frame, text="+", command=self.zoom_x_in).grid(row=1, column=1)
         ttk.Button(btn_frame, text="-", command=self.zoom_x_out).grid(row=1, column=2)
-        ttk.Button(btn_frame, text="¡û", command=self.pan_x_left).grid(row=1, column=3)
-        ttk.Button(btn_frame, text="¡ú", command=self.pan_x_right).grid(row=1, column=4)
+        ttk.Button(btn_frame, text="â†", command=self.pan_x_left).grid(row=1, column=3)
+        ttk.Button(btn_frame, text="â†’", command=self.pan_x_right).grid(row=1, column=4)
 
-        # µ±Ç°Ê±¼ä¾ÓÖĞ°´Å¥
+        # å½“å‰æ—¶é—´å±…ä¸­æŒ‰é’®
         ttk.Button(btn_frame, text="Current to Center", command=self.center_now).grid(row=2, column=0, columnspan=2)
 
-        # Ôö¼Ó Auto Center ¸´Ñ¡¿ò
-        self.auto_center_var = tk.IntVar(value=1)  # Ä¬ÈÏ¹´Ñ¡
+        # å¢åŠ  Auto Center å¤é€‰æ¡†
+        self.auto_center_var = tk.IntVar(value=1)  # é»˜è®¤å‹¾é€‰
         ttk.Checkbutton(btn_frame, text="Auto Center", variable=self.auto_center_var, command=self.on_auto_center_toggle).grid(row=2, column=2, columnspan=2)
 
-        # Ôö¼Ó Auto Mark ¸´Ñ¡¿ò
-        self.auto_mark_var = tk.IntVar(value=1)  # Ä¬ÈÏ¹´Ñ¡
+        # å¢åŠ  Auto Mark å¤é€‰æ¡†
+        self.auto_mark_var = tk.IntVar(value=1)  # é»˜è®¤å‹¾é€‰
         ttk.Checkbutton(btn_frame, text="Auto Mark", variable=self.auto_mark_var, command=self.on_auto_mark_toggle).grid(row=2, column=4, columnspan=2)
 
-        # ¼ÇÂ¼µ½×´Ì¬±äÁ¿ÖĞ
+        # è®°å½•åˆ°çŠ¶æ€å˜é‡ä¸­
         self.auto_center = 1
         self.auto_mark = 1
 
-        # ÊÇ·ñÕıÔÚ±äÎÂÔËĞĞÖĞµÄ±êÖ¾Î»
+        # æ˜¯å¦æ­£åœ¨å˜æ¸©è¿è¡Œä¸­çš„æ ‡å¿—ä½
         self.cycle_running = False
 
-        # µ±Ç°ÎÂÏäÔËĞĞµÄÀàĞÍ£¬0123ÒÀ´ÎÎªºãÎÂ¡¢±äÎÂ¡¢ºãÊª¡¢±äÊª
+        # å½“å‰æ¸©ç®±è¿è¡Œçš„ç±»å‹ï¼Œ0123ä¾æ¬¡ä¸ºæ’æ¸©ã€å˜æ¸©ã€æ’æ¹¿ã€å˜æ¹¿
         self.current_run_mode = 0
 
-        # ÏµÍ³Ê±¼äÏÔÊ¾
-        ttk.Label(btn_frame, text="Date£º").grid(row=3, column=0, sticky="e")
+        # ç³»ç»Ÿæ—¶é—´æ˜¾ç¤º
+        ttk.Label(btn_frame, text="Dateï¼š").grid(row=3, column=0, sticky="e")
         self.date_var = tk.StringVar(value="--")
         ttk.Label(btn_frame, textvariable=self.date_var).grid(row=3, column=1, sticky="w")
-        ttk.Label(btn_frame, text="Time£º").grid(row=3, column=2, sticky="e")
+        ttk.Label(btn_frame, text="Timeï¼š").grid(row=3, column=2, sticky="e")
         self.time_var = tk.StringVar(value="--")
         ttk.Label(btn_frame, textvariable=self.time_var).grid(row=3, column=3, sticky="w")
 
-        # 2. ÆäÓà GUI ²¿¼ş
-        # ¿ØÖÆÃæ°å Frame£¨ÓÒ²à£©
+        # 2. å…¶ä½™ GUI éƒ¨ä»¶
+        # æ§åˆ¶é¢æ¿ Frameï¼ˆå³ä¾§ï¼‰
         ctrl_frame = ttk.Frame(top_frame)
         ctrl_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
         right_row_0_frame = ttk.Frame(ctrl_frame)
         right_row_0_frame.grid(row=0, column=0,columnspan=3, sticky="w")
 
-        # ÎÂÏä IP µØÖ·Ñ¡ÔñÁĞ±í 
+        # æ¸©ç®± IP åœ°å€é€‰æ‹©åˆ—è¡¨ 
         self.ip_options = [
             "Chamber01:10.166.156.132",
             "Chamber02:10.166.156.135",
@@ -528,10 +517,10 @@ class ChamberGUI(tk.Tk):
             "Chamber18:10.166.157.25",
             "Chamber19:10.166.157.102",
         ]
-        # IPÑ¡Ôñ
+        # IPé€‰æ‹©
         ttk.Label(right_row_0_frame, text="IP:").grid(row=0, column=0, sticky="w")
 
-        # Combobox Ö»¶Á£¬ÏÂÀ­ÁĞ±í²»¿É±à¼­ :contentReference[oaicite:2]{index=2}
+        # Combobox åªè¯»ï¼Œä¸‹æ‹‰åˆ—è¡¨ä¸å¯ç¼–è¾‘ :contentReference[oaicite:2]{index=2}
         self.selected_ip = tk.StringVar()
         self.ip_combo = ttk.Combobox(
             right_row_0_frame,
@@ -541,10 +530,10 @@ class ChamberGUI(tk.Tk):
             width=23
         )
         self.ip_combo.grid(row=0, column=1, padx=5, sticky="w")
-        # Ä¬ÈÏÑ¡µÚÒ»¸ö
+        # é»˜è®¤é€‰ç¬¬ä¸€ä¸ª
         self.ip_combo.current(0)
 
-        # ÎÂÏä port Ñ¡ÔñÁĞ±í 
+        # æ¸©ç®± port é€‰æ‹©åˆ—è¡¨ 
         self.port_options = [
             "502",
             "503",
@@ -556,7 +545,7 @@ class ChamberGUI(tk.Tk):
         # port select
         ttk.Label(right_row_0_frame, text = "Port:").grid(row=0, column=2,sticky="w")
 
-        # Combobox Ö»¶Á£¬ÏÂÀ­ÁĞ±í²»¿É±à¼­ :contentReference[oaicite:2]{index=2}
+        # Combobox åªè¯»ï¼Œä¸‹æ‹‰åˆ—è¡¨ä¸å¯ç¼–è¾‘ :contentReference[oaicite:2]{index=2}
         self.selected_port = tk.StringVar()
         self.port_combo = ttk.Combobox(
             right_row_0_frame,
@@ -566,16 +555,16 @@ class ChamberGUI(tk.Tk):
             width=3
         )
         self.port_combo.grid(row=0, column=3, padx=5, sticky="w")
-        # Ä¬ÈÏÑ¡µÚÒ»¸ö
+        # é»˜è®¤é€‰ç¬¬ä¸€ä¸ª
         self.port_combo.current(0)
         
         self.conn_btn = ttk.Button(right_row_0_frame, text="Connect", command=self.toggle_connection,width=10)
         self.conn_btn.grid(row=0, column=4, padx=(13,0))
 
-        # ÔËĞĞ×´Ì¬
+        # è¿è¡ŒçŠ¶æ€
         right_row_1_frame = ttk.Frame(ctrl_frame)
         right_row_1_frame.grid(row=1, column=0,columnspan=3, sticky="w")
-        self.run_status_label = ttk.Label(right_row_1_frame, text="Status£º")
+        self.run_status_label = ttk.Label(right_row_1_frame, text="Statusï¼š")
         self.run_status_label.grid(row=0, column=0, padx=(0,0), sticky="w")
 
         self.status_var = tk.StringVar(value="disconnected")
@@ -595,21 +584,21 @@ class ChamberGUI(tk.Tk):
         # row 2
         right_row_2_frame = ttk.Frame(ctrl_frame)
         right_row_2_frame.grid(row=2, column=0,columnspan=3, sticky="w")
-        # µ±Ç°ÎÂ¶È
-        ttk.Label(right_row_2_frame, text="Temperture £º").grid(row=0, column=0,padx=(0,5), sticky="w")
+        # å½“å‰æ¸©åº¦
+        ttk.Label(right_row_2_frame, text="Temperture ï¼š").grid(row=0, column=0,padx=(0,5), sticky="w")
         self.temp_var = tk.StringVar(value="--")
         ttk.Label(right_row_2_frame, textvariable=self.temp_var,width = 9).grid(row=0, column=1,padx=(0,5), sticky="w")
 
         self.test_type_constant_btn = ttk.Button(right_row_2_frame, text="Constant Mode", command=lambda: self.chamber.set_run_type(0),width = 14)
         self.test_type_constant_btn.grid(row=0, column=3, padx=(0,5), sticky="w")
 
-        self.test_type_viarable_btn = ttk.Button(right_row_2_frame, text="Viarable Mode", command=lambda: self.chamber.set_run_type(1),width = 14)
+        self.test_type_viarable_btn = ttk.Button(right_row_2_frame, text="Variable Mode", command=lambda: self.chamber.set_run_type(1),width = 14)
         self.test_type_viarable_btn.grid(row=0, column=4, padx=5, sticky="w")
 
-        # Ä¿±êÎÂ¶ÈÉèÖÃ
+        # ç›®æ ‡æ¸©åº¦è®¾ç½®
         right_row_3_frame = ttk.Frame(ctrl_frame)
         right_row_3_frame.grid(row=3, column=0,columnspan=3, sticky="w")
-        ttk.Label(right_row_3_frame, text="Target temp£º").grid(row=0, column=0,padx=(0,5), sticky="w")
+        ttk.Label(right_row_3_frame, text="Target tempï¼š").grid(row=0, column=0,padx=(0,5), sticky="w")
         self.target_temp_label_var = tk.StringVar(value="--")
         ttk.Label(right_row_3_frame, textvariable=self.target_temp_label_var,width = 10).grid(row=0, column=1,padx=(0,5), sticky="w")
         self.set_temp_var = tk.StringVar()
@@ -618,70 +607,70 @@ class ChamberGUI(tk.Tk):
 
 
 
-        # ¶àĞĞÎÄ±¾¿òÓë°´Å¥
+        # å¤šè¡Œæ–‡æœ¬æ¡†ä¸æŒ‰é’®
         setting_frame = ttk.LabelFrame(self, text="Temp Wave Setting")
         setting_frame.pack(fill=tk.BOTH, expand=False, padx=10, pady=5)
 
-        # ¶àĞĞÎÄ±¾¿ò£¨×ó²à£¬Õ¼¾İ´ó²¿·Ö¿í¶È£©
+        # å¤šè¡Œæ–‡æœ¬æ¡†ï¼ˆå·¦ä¾§ï¼Œå æ®å¤§éƒ¨åˆ†å®½åº¦ï¼‰
         self.wave_text = ScrolledText(setting_frame, width=50, height=6)
         self.wave_text.grid(row=0, column=0, padx=(5,10), pady=5, sticky="nsew")
 
-        # ÓÒ²à°´Å¥ÇøÓò
+        # å³ä¾§æŒ‰é’®åŒºåŸŸ
         btn_wave_frame = ttk.Frame(setting_frame)
         btn_wave_frame.grid(row=0, column=1, padx=5, pady=5, sticky="n")
         btn_wave_frame.columnconfigure(0, weight=1)
 
-        # ¡°Wave Preview¡± °´Å¥
+        # â€œWave Previewâ€ æŒ‰é’®
         self.wave_preview_btn = ttk.Button(btn_wave_frame, text="Wave Preview", command=self.wave_preview)
         self.wave_preview_btn.grid(row=0, column=0, sticky="ew")
 
-        # ¡°Temp Cycle Start¡± °´Å¥
+        # â€œTemp Cycle Startâ€ æŒ‰é’®
         self.temp_cycle_start_btn = ttk.Button(btn_wave_frame, text="Wave Start", command=self.temp_cycle_start)
         self.temp_cycle_start_btn.grid(row=1, column=0, sticky="ew")
 
-        # ¡°Load Wave Setting¡± °´Å¥
+        # â€œLoad Wave Settingâ€ æŒ‰é’®
         self.load_wave_btn = ttk.Button(btn_wave_frame,text="Load Wave",command=self.load_wave_setting)
         self.load_wave_btn.grid(row=2, column=0, sticky="ew")
 
-        # ¡°Save Wave Setting¡± °´Å¥
+        # â€œSave Wave Settingâ€ æŒ‰é’®
         self.save_wave_btn = ttk.Button(btn_wave_frame,text="Save Wave",command=self.save_wave_setting)
         self.save_wave_btn.grid(row=3, column=0, sticky="ew")
 
 
-        # Ê¹ÎÄ±¾¿òÓë°´Å¥ÇøÓòÔÚË®Æ½ÉÏÀ­Éì
+        # ä½¿æ–‡æœ¬æ¡†ä¸æŒ‰é’®åŒºåŸŸåœ¨æ°´å¹³ä¸Šæ‹‰ä¼¸
         setting_frame.columnconfigure(0, weight=1)
         setting_frame.columnconfigure(1, weight=0)
 
-        # 3. ÈÕÖ¾ÎÄ¼ş³õÊ¼»¯
-        # £¨ÔÚÕâÀï½öÈ·±£ÎÄ¼ş´æÔÚ£¬ÓÉÂÖÑ¯ÖĞ´´½¨/Ğ´Èë¹ÜÀí£©
+        # 3. æ—¥å¿—æ–‡ä»¶åˆå§‹åŒ–
+        # ï¼ˆåœ¨è¿™é‡Œä»…ç¡®ä¿æ–‡ä»¶å­˜åœ¨ï¼Œç”±è½®è¯¢ä¸­åˆ›å»º/å†™å…¥ç®¡ç†ï¼‰
         open(self.log_path, "a+", encoding="utf-8").close()
-        # ÓÃÓÚ¼ÇÂ¼Ğ´ÈëÍ¬Ò»¸öÎÄ¼şµÄ´ÎÊı£¬Ã¿1000´Î¼ì²éµ±Ç°ÎÄ¼ş´óĞ¡
+        # ç”¨äºè®°å½•å†™å…¥åŒä¸€ä¸ªæ–‡ä»¶çš„æ¬¡æ•°ï¼Œæ¯1000æ¬¡æ£€æŸ¥å½“å‰æ–‡ä»¶å¤§å°
         self.write_count = 0
 
-        # ±³¾°ÂÖÑ¯¿ØÖÆ
+        # èƒŒæ™¯è½®è¯¢æ§åˆ¶
         self.chamber = None
         self._running = False
         self._poll_thread = None
 
-        # ÇúÏßÉ¢µã±äÁ¿
+        # æ›²çº¿æ•£ç‚¹å˜é‡
         self.wave_point_times = None
         self.wave_point_temps = None
 
-        # Æô¶¯ÏµÍ³Ê±¼ä¸üĞÂ
+        # å¯åŠ¨ç³»ç»Ÿæ—¶é—´æ›´æ–°
         self.after(1000, self.update_datetime)
-        # Æô¶¯³õ´ÎÇúÏß»æÖÆ
+        # å¯åŠ¨åˆæ¬¡æ›²çº¿ç»˜åˆ¶
         self.plot_log_data()
         self.update_minor_locator()
 
-        # Ini ÎÄ¼şÂ·¾¶
+        # Ini æ–‡ä»¶è·¯å¾„
         self.ini_path = "ChamCtrlSetup.ini"
         self._load_last_ip()
         self._load_last_wave_text()
 
-        # ´°¿Ú¹Ø±Õ¹³×Ó
+        # çª—å£å…³é—­é’©å­
         self.protocol("WM_DELETE_WINDOW", self.on_close)
 
-# ´Ë¶Î¿Õ°×ÓÃÒÔ·Ö¿ªÃæ°åºÍº¯Êı ---------------------------------------------------------------------------------------------------------------
+# æ­¤æ®µç©ºç™½ç”¨ä»¥åˆ†å¼€é¢æ¿å’Œå‡½æ•° ---------------------------------------------------------------------------------------------------------------
 
 
 
@@ -697,7 +686,56 @@ class ChamberGUI(tk.Tk):
 
 
 
-# ´Ë¶Î¿Õ°×ÓÃÒÔ·Ö¿ªÃæ°åºÍº¯Êı ---------------------------------------------------------------------------------------------------------------
+# æ­¤æ®µç©ºç™½ç”¨ä»¥åˆ†å¼€é¢æ¿å’Œå‡½æ•° ---------------------------------------------------------------------------------------------------------------
+
+    def show_about_window(self):
+        top = tk.Toplevel(self)
+        top.title("Coffee!")
+        # è®¾ç½®å›ºå®šçª—å£å¤§å°
+        win_width = 300
+        win_height = 300
+
+        # è·å–ä¸»çª—å£çš„ä½ç½®å’Œå°ºå¯¸
+        self.update_idletasks()
+        root_x = self.winfo_x()
+        root_y = self.winfo_y()
+        root_width = self.winfo_width()
+        root_height = self.winfo_height()
+
+        # è®¡ç®—å±…ä¸­ä½ç½®
+        pos_x = root_x + (root_width - win_width) // 2
+        pos_y = root_y + (root_height - win_height) // 2
+
+        # è®¾ç½® Toplevel çª—å£çš„å¤§å°å’Œä½ç½®
+        top.geometry(f"{win_width}x{win_height}+{pos_x}+{pos_y}")
+    
+        # åŠ è½½å¤§å›¾
+        try:
+            image_path = self.resource_path("my_image.jpg")
+            img_pil = Image.open(image_path)
+            img_resized = img_pil.resize((200, 200), Image.Resampling.LANCZOS)
+            photo = ImageTk.PhotoImage(img_resized)
+
+            # æ˜¾ç¤ºå›¾ç‰‡
+            label = tk.Label(top, image=photo)
+            label.image = photo  # é˜²æ­¢è¢«åƒåœ¾å›æ”¶
+            label.pack(pady=10)
+        except Exception as e:
+            tk.Label(top, text=f"å›¾ç‰‡æ˜¾ç¤ºå¤±è´¥: {e}").pack()
+
+        tk.Label(top, text="If this tool saved your time,").pack()
+        tk.Label(top, text="feel free to buy me a coffee.").pack()
+        tk.Label(top, text="Your support means a lot to me!").pack()
+
+    def resource_path(self, relative_path):
+        """è·å–èµ„æºæ–‡ä»¶çš„ç»å¯¹è·¯å¾„"""
+        try:
+            # PyInstaller æ‰“åŒ…åçš„è·¯å¾„
+            base_path = sys._MEIPASS
+        except Exception:
+            # å¼€å‘ç¯å¢ƒè·¯å¾„
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
 
     def on_auto_mark_toggle(self):
         self.auto_mark = self.auto_mark_var.get()
@@ -718,21 +756,8 @@ class ChamberGUI(tk.Tk):
         except Exception:
             pass
 
-    def _load_last_ip(self):
-        if not os.path.exists(self.ini_path):
-            return
-        config = configparser.ConfigParser()
-        try:
-            config.read(self.ini_path, encoding="utf-8")
-            last_ip = config["DEFAULT"].get("last_ip", "").strip()
-            if last_ip and last_ip in self.ip_options:
-                idx = self.ip_options.index(last_ip)
-                self.ip_combo.current(idx)
-        except Exception:
-            pass
-
     def _load_last_wave_text(self):
-        """Æô¶¯Ê±¼ÓÔØÉÏ´Î±£´æµÄ²¨ĞÎÉèÖÃÎÄ±¾"""
+        """å¯åŠ¨æ—¶åŠ è½½ä¸Šæ¬¡ä¿å­˜çš„æ³¢å½¢è®¾ç½®æ–‡æœ¬"""
         if not os.path.exists(self.ini_path):
             return
         config = configparser.ConfigParser()
@@ -740,14 +765,14 @@ class ChamberGUI(tk.Tk):
             config.read(self.ini_path, encoding="utf-8")
             wt = config["DEFAULT"].get("wave_text", "")
             if wt:
-                # ÌîÈë¶àĞĞÎÄ±¾¿ò
+                # å¡«å…¥å¤šè¡Œæ–‡æœ¬æ¡†
                 self.wave_text.delete("1.0", tk.END)
                 self.wave_text.insert(tk.END, wt)
         except Exception:
             pass
         
     def load_wave_setting(self):
-        """´Ó .txt ÎÄ¼ş¼ÓÔØ²¨ĞÎÉèÖÃµ½¶àĞĞÎÄ±¾¿ò"""
+        """ä» .txt æ–‡ä»¶åŠ è½½æ³¢å½¢è®¾ç½®åˆ°å¤šè¡Œæ–‡æœ¬æ¡†"""
         path = filedialog.askopenfilename(
             title="Load Wave Setting",
             filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
@@ -761,12 +786,12 @@ class ChamberGUI(tk.Tk):
             messagebox.showerror("Error", f"Cannot read file:\n{e}")
             return
 
-        # ½«¶ÁÈ¡µÄÄÚÈİ·ÅÈë¶àĞĞÎÄ±¾¿ò
+        # å°†è¯»å–çš„å†…å®¹æ”¾å…¥å¤šè¡Œæ–‡æœ¬æ¡†
         self.wave_text.delete("1.0", tk.END)
         self.wave_text.insert(tk.END, content)
 
     def save_wave_setting(self):
-        """½«¶àĞĞÎÄ±¾¿òÄÚÈİ±£´æµ½Ö¸¶¨ .txt ÎÄ¼ş"""
+        """å°†å¤šè¡Œæ–‡æœ¬æ¡†å†…å®¹ä¿å­˜åˆ°æŒ‡å®š .txt æ–‡ä»¶"""
         path = filedialog.asksaveasfilename(
             title="Save Wave Setting",
             defaultextension=".txt",
@@ -790,8 +815,8 @@ class ChamberGUI(tk.Tk):
             messagebox.showwarning("Warning", "No wave definition found")
             return
 
-        # 1. ½âÎö start temp¡¢loop count ºÍ½ÚµãÁĞ±í
-        # Ê¾Àı¸ñÊ½£º(start temp 25C)-(loop count 10)-[(0,25C)-(55,80C)-¡­]
+        # 1. è§£æ start tempã€loop count å’ŒèŠ‚ç‚¹åˆ—è¡¨
+        # ç¤ºä¾‹æ ¼å¼ï¼š(start temp 25C)-(loop count 10)-[(0,25C)-(55,80C)-â€¦]
         m_start = re.search(r'start temp\s+(-?\d+)C', text)
         m_loop  = re.search(r'loop count\s+(\d+)', text)
         nodes   = re.findall(r'\((\d+),\s*(-?\d+)C\)', text)
@@ -802,16 +827,16 @@ class ChamberGUI(tk.Tk):
 
         start_temp = int(m_start.group(1))
         loop_count = int(m_loop.group(1))
-        # ×ª³É [(minutes, temp), ...]
+        # è½¬æˆ [(minutes, temp), ...]
         points = [(int(mins), int(tmp)) for mins, tmp in nodes]
 
-        # 1. ¼ÆËãµÚÒ»¶Î£ºµ±Ç°ÎÂ¶Èµ½ start_temp
+        # 1. è®¡ç®—ç¬¬ä¸€æ®µï¼šå½“å‰æ¸©åº¦åˆ° start_temp
         now_dt    = dt.datetime.now()
         base_time = now_dt
         try:
             s = self.temp_var.get().strip()
-            # È¥µô¶È·ûºÅ£¨Ö§³Ö¡°¡æ¡±ºÍ¡°¡ãC¡±Á½ÖÖĞ´·¨£©
-            s = s.rstrip("¡æ¡ãC")  
+            # å»æ‰åº¦ç¬¦å·ï¼ˆæ”¯æŒâ€œâ„ƒâ€å’Œâ€œÂ°Câ€ä¸¤ç§å†™æ³•ï¼‰
+            s = s.rstrip("â„ƒÂ°C")  
             cur_temp = float(s)
         except (ValueError, TypeError):
             cur_temp = 25.0
@@ -821,36 +846,36 @@ class ChamberGUI(tk.Tk):
 
         wave_times = [base_time]
         wave_temps = [cur_temp]
-        # Èç¹ûÒªÔö¼ÓµÄµãºÍÇ°Ò»¸öµãÏàÍ¬£¬Ôò²»Ôö¼ÓĞÂµÄµã
+        # å¦‚æœè¦å¢åŠ çš„ç‚¹å’Œå‰ä¸€ä¸ªç‚¹ç›¸åŒï¼Œåˆ™ä¸å¢åŠ æ–°çš„ç‚¹
         if not (t0_end==wave_times[-1] and start_temp==wave_temps[-1]):
             wave_times.append(t0_end)
             wave_temps.append(start_temp)
 
-        # 2. Ñ­»·¶Î£ºÑÏ¸ñÓÃÔöÁ¿¼ÆËã
+        # 2. å¾ªç¯æ®µï¼šä¸¥æ ¼ç”¨å¢é‡è®¡ç®—
         last_time = t0_end
         for _ in range(loop_count):
-            # ÕâÁ½¸ö±äÁ¿ÔÚÃ¿´ÎĞÂÑ­»·¿ªÊ¼Ê±¶¼ÒªÖØÖÃ
+            # è¿™ä¸¤ä¸ªå˜é‡åœ¨æ¯æ¬¡æ–°å¾ªç¯å¼€å§‹æ—¶éƒ½è¦é‡ç½®
             segment_time = last_time
 
             for offset_minutes, temp in points:
-                # ¼ÆËãÏà¶ÔÔöÁ¿£¬±ÜÃâÖ±½ÓÓÃ offset_minutes µ¼ÖÂµ¹ÍË
+                # è®¡ç®—ç›¸å¯¹å¢é‡ï¼Œé¿å…ç›´æ¥ç”¨ offset_minutes å¯¼è‡´å€’é€€
                 delta = offset_minutes
-                # »ùÓÚÉÏÒ»¸öÕæÊµÊ±¼äµã¼ÓÉÏÔöÁ¿
+                # åŸºäºä¸Šä¸€ä¸ªçœŸå®æ—¶é—´ç‚¹åŠ ä¸Šå¢é‡
                 segment_time = segment_time + dt.timedelta(minutes=delta)
-                        # Èç¹ûÒªÔö¼ÓµÄµãºÍÇ°Ò»¸öµãÏàÍ¬£¬Ôò²»Ôö¼ÓĞÂµÄµã
+                        # å¦‚æœè¦å¢åŠ çš„ç‚¹å’Œå‰ä¸€ä¸ªç‚¹ç›¸åŒï¼Œåˆ™ä¸å¢åŠ æ–°çš„ç‚¹
                 if not (segment_time==wave_times[-1] and temp==wave_temps[-1]):
                     wave_times.append(segment_time)
                     wave_temps.append(temp)
 
-            # Ñ­»·½áÊøºó£¬last_time ¸üĞÂÎª segment_time
+            # å¾ªç¯ç»“æŸåï¼Œlast_time æ›´æ–°ä¸º segment_time
             last_time = segment_time
 
-        # 6. »æÖÆºìÉ«ÕÛÏß
-        # ÏÈÒÆ³ı¾ÉµÄ preview Ïß£¨Èç¹ûÓĞµÄ»°£¬±êÇ©Îª "_wave_preview"£©
+        # 6. ç»˜åˆ¶çº¢è‰²æŠ˜çº¿
+        # å…ˆç§»é™¤æ—§çš„ preview çº¿ï¼ˆå¦‚æœæœ‰çš„è¯ï¼Œæ ‡ç­¾ä¸º "_wave_preview"ï¼‰
         for ln in [l for l in self.ax.get_lines() if l.get_label() == "_wave_preview"]:
             ln.remove()
 
-        # »æĞÂÏß
+        # ç»˜æ–°çº¿
         (line,) = self.ax.plot(
             mdates.date2num(wave_times),
             wave_temps,
@@ -859,27 +884,27 @@ class ChamberGUI(tk.Tk):
             color='red',
             label="_wave_preview"
         )
-        # È·±£Íø¸ñ¡¢¿Ì¶È²»±ä
+        # ç¡®ä¿ç½‘æ ¼ã€åˆ»åº¦ä¸å˜
         self.canvas.draw_idle()
 
     def temp_cycle_start(self):
-        """¿ªÊ¼»òÍ£Ö¹ÎÂ¶ÈÑ­»·"""
-        if not self.chamber or not self.chamber.connected:  # ÕıÈ·Ê¹ÓÃ connected ÊôĞÔ
+        """å¼€å§‹æˆ–åœæ­¢æ¸©åº¦å¾ªç¯"""
+        if not self.chamber or not self.chamber.connected:  # æ­£ç¡®ä½¿ç”¨ connected å±æ€§
             messagebox.showwarning("Not Connected", "Please connect chamber first!")
             return
 
         if self.cycle_running == False:
-            # ÇĞ»»×´Ì¬
+            # åˆ‡æ¢çŠ¶æ€
             if self.current_run_mode !=0:
                 messagebox.showerror("Not in Constant Mode", "Please change mode first!")
                 return
             self.cycle_running = True
             self.temp_cycle_start_btn.config(text="Wave Stop")
 
-            # 1. µ÷ÓÃ wave_preview Éú³ÉºìÏß
+            # 1. è°ƒç”¨ wave_preview ç”Ÿæˆçº¢çº¿
             self.wave_preview()
 
-            # 2. »ñÈ¡ _wave_preview ÏßµÄËùÓĞµã
+            # 2. è·å– _wave_preview çº¿çš„æ‰€æœ‰ç‚¹
             preview_lines = [ln for ln in self.ax.get_lines() if ln.get_label() == "_wave_preview"]
             if not preview_lines:
                 messagebox.showerror("Error", "Please input temp wave setting or load one!")
@@ -888,7 +913,7 @@ class ChamberGUI(tk.Tk):
             x_data = list(mdates.num2date(preview_lines[0].get_xdata()))
             y_data = list(preview_lines[0].get_ydata())
 
-            # 3. ²åÖµ£ºÔÚÃ¿¶ÔµãÖ®¼ä²åÈë 1 ·ÖÖÓ¼ä¸ôµÄµã£¨ÎÂ¶ÈÏßĞÔ²åÖµ£©
+            # 3. æ’å€¼ï¼šåœ¨æ¯å¯¹ç‚¹ä¹‹é—´æ’å…¥ 1 åˆ†é’Ÿé—´éš”çš„ç‚¹ï¼ˆæ¸©åº¦çº¿æ€§æ’å€¼ï¼‰
             expanded_points = []
             for i in range(len(x_data) - 1):
                 t1, t2 = x_data[i], x_data[i + 1]
@@ -904,15 +929,15 @@ class ChamberGUI(tk.Tk):
 
             expanded_points.append((x_data[-1], y_data[-1]))
 
-            # ´æÈëÊôĞÔ¹©µ÷¶ÈÓÃ
+            # å­˜å…¥å±æ€§ä¾›è°ƒåº¦ç”¨
             self._cycle_points = expanded_points
 
-            # Æô¶¯µ÷¶È
+            # å¯åŠ¨è°ƒåº¦
             self._run_temp_cycle_loop()
         
-        # Èç¹ûµ±Ç°ÕıÔÚÔËĞĞÖĞ£¬ÔòÍ£Ö¹ÔËĞĞ£¬²¢ĞŞ¸Ä±êÖ¾Î»ºÍ°´¼ü
+        # å¦‚æœå½“å‰æ­£åœ¨è¿è¡Œä¸­ï¼Œåˆ™åœæ­¢è¿è¡Œï¼Œå¹¶ä¿®æ”¹æ ‡å¿—ä½å’ŒæŒ‰é”®
         else:
-            # Í£Ö¹Ñ­»·
+            # åœæ­¢å¾ªç¯
             self._stop_temp_cycle()
             self.cycle_running = False
             self.temp_cycle_start_btn.config(text="Wave Start")
@@ -920,13 +945,13 @@ class ChamberGUI(tk.Tk):
 
 
     def _run_temp_cycle_loop(self):
-        """Ã¿ 5 Ãë¼ì²éÊÇ·ñÓĞµãÆ¥Åäµ±Ç°Ê±¼ä£¬ÈôÓĞÔò·¢ËÍÎÂ¶È"""
+        """æ¯ 5 ç§’æ£€æŸ¥æ˜¯å¦æœ‰ç‚¹åŒ¹é…å½“å‰æ—¶é—´ï¼Œè‹¥æœ‰åˆ™å‘é€æ¸©åº¦"""
         if not self.cycle_running:
             return
 
         if self.current_run_mode !=0:
             messagebox.showerror("Not in Constant Mode", "Running Stopped!")
-            # Í£Ö¹Ñ­»·
+            # åœæ­¢å¾ªç¯
             self._stop_temp_cycle()
             self.cycle_running = False
             self.temp_cycle_start_btn.config(text="Wave Start")
@@ -960,7 +985,7 @@ class ChamberGUI(tk.Tk):
 
 
     def _stop_temp_cycle(self):
-        """ÊÖ¶¯Í£Ö¹Ñ­»·"""
+        """æ‰‹åŠ¨åœæ­¢å¾ªç¯"""
         self.cycle_running = False
         self.temp_cycle_start_btn.config(text="Temp Cycle Start")
         self._cycle_points = []
@@ -970,21 +995,21 @@ class ChamberGUI(tk.Tk):
         self.canvas.draw_idle()
 
     def center_now_without_draw(self):
-        """½« X ÖáÖĞĞÄÒÆ¶¯µ½µ±Ç°ÏµÍ³Ê±¼ä£¬±£³Ö¿ç¶È²»±ä"""
-        # 1. È¡µ±Ç°µÄ xlim£¨ËüÃÇ±¾Éí¾ÍÊÇ Matplotlib ¸¡µãÌìÊı£©
+        """å°† X è½´ä¸­å¿ƒç§»åŠ¨åˆ°å½“å‰ç³»ç»Ÿæ—¶é—´ï¼Œä¿æŒè·¨åº¦ä¸å˜"""
+        # 1. å–å½“å‰çš„ xlimï¼ˆå®ƒä»¬æœ¬èº«å°±æ˜¯ Matplotlib æµ®ç‚¹å¤©æ•°ï¼‰
         x0, x1 = self.ax.get_xlim()
         span = x1 - x0
 
-        # 2. »ñÈ¡µ±Ç°Ê±¼ä¶ÔÓ¦µÄ Matplotlib ĞòÊı£¨¸¡µãÌìÊı£©
+        # 2. è·å–å½“å‰æ—¶é—´å¯¹åº”çš„ Matplotlib åºæ•°ï¼ˆæµ®ç‚¹å¤©æ•°ï¼‰
         now_dt = dt.datetime.now()
         now_num = mdates.date2num(now_dt)
 
-        # 3. ÖØĞÂÉè¶¨ xlim£¬Ê¹µ±Ç°Ê±¼ä¾ÓÖĞ
+        # 3. é‡æ–°è®¾å®š xlimï¼Œä½¿å½“å‰æ—¶é—´å±…ä¸­
         new_left  = now_num - span / 2
         new_right = now_num + span / 2
         self.ax.set_xlim(new_left, new_right)
 
-        # 4. ¸üĞÂ´Î¿Ì¶È£¨Èç¹ûÓĞ¶¯Ì¬´Î¿Ì¶ÈÂß¼­£©
+        # 4. æ›´æ–°æ¬¡åˆ»åº¦ï¼ˆå¦‚æœæœ‰åŠ¨æ€æ¬¡åˆ»åº¦é€»è¾‘ï¼‰
         self.update_minor_locator_without_draw()
 
     def mark_new_point(self):
@@ -993,29 +1018,29 @@ class ChamberGUI(tk.Tk):
 
     def mark_new_point_without_draw(self):
 
-        # 1. Ö±½Ó´Ó data_scatter È¡×îºóÒ»¸öµã
+        # 1. ç›´æ¥ä» data_scatter å–æœ€åä¸€ä¸ªç‚¹
         offsets = self.data_scatter.get_offsets()
         if len(offsets) == 0:
             return
         x_num, y_last = offsets[-1]
-        # Í¬Ê±ĞèÒªÒ»¸ö datetime °æ±¾ÓÃÓÚ¸ñÊ½»¯ÎÄ±¾
+        # åŒæ—¶éœ€è¦ä¸€ä¸ª datetime ç‰ˆæœ¬ç”¨äºæ ¼å¼åŒ–æ–‡æœ¬
         x_last_dt = mdates.num2date(x_num)
 
-        # 2. ÒÆ³ıÉÏ´Î mark ²úÉúµÄËùÓĞ±ê¼Ç
-        #    ÎÒÃÇ°ÑÉÏ´ÎµÄ circle/text ¶¼»º´æµ½ self._mark_artists ÁĞ±í
+        # 2. ç§»é™¤ä¸Šæ¬¡ mark äº§ç”Ÿçš„æ‰€æœ‰æ ‡è®°
+        #    æˆ‘ä»¬æŠŠä¸Šæ¬¡çš„ circle/text éƒ½ç¼“å­˜åˆ° self._mark_artists åˆ—è¡¨
         for art in getattr(self, '_mark_artists', []):
             art.remove()
-        # ÖØÖÃÁĞ±í
+        # é‡ç½®åˆ—è¡¨
         self._mark_artists = []
 
-        # 3. ¼ÆËãÆ«ÒÆ£¨Óë on_plot_click ±£³ÖÒ»ÖÂ£©
+        # 3. è®¡ç®—åç§»ï¼ˆä¸ on_plot_click ä¿æŒä¸€è‡´ï¼‰
         x0, x1 = self.ax.get_xlim()
         y0, y1 = self.ax.get_ylim()
         dx = (x1 - x0) * 0.02
         dy = (y1 - y0) * 0.02
 
-        # 4. ´´½¨ÎÄ±¾±êÇ©
-        label = f"{x_last_dt.strftime('%H:%M:%S')}\n{y_last:.1f}¡æ"
+        # 4. åˆ›å»ºæ–‡æœ¬æ ‡ç­¾
+        label = f"{x_last_dt.strftime('%H:%M:%S')}\n{y_last:.1f}â„ƒ"
         txt = self.ax.text(
             x_num + dx,
             y_last + dy,
@@ -1027,10 +1052,10 @@ class ChamberGUI(tk.Tk):
         txt.is_point_label = True
         self._mark_artists.append(txt)
 
-        # 5. ´´½¨»ÆÉ«Ô²»·
-        #    °ë¾¶ÉèÎª y Öá¿ç¶ÈµÄ 5%
+        # 5. åˆ›å»ºé»„è‰²åœ†ç¯
+        #    åŠå¾„è®¾ä¸º y è½´è·¨åº¦çš„ 5%
         radius = (y1 - y0) * 0.05
-        #    ÓÉÓÚºá×İÏñËØ±È²»Ò»¶¨ 1:1£¬ÓÃ display_ratio ×öµÈ±Èµ÷Õû
+        #    ç”±äºæ¨ªçºµåƒç´ æ¯”ä¸ä¸€å®š 1:1ï¼Œç”¨ display_ratio åšç­‰æ¯”è°ƒæ•´
         fig_w, fig_h = self.figure.get_figwidth(), self.figure.get_figheight()
         display_ratio = ( (x1 - x0) / fig_w ) / ( (y1 - y0) / fig_h )
         circ = Ellipse(
@@ -1046,38 +1071,38 @@ class ChamberGUI(tk.Tk):
         self._mark_artists.append(circ)
 
     def setup_axis(self):
-        """³õÊ¼»¯Ê±µ÷ÓÃÒ»´Î£ºË«²ã¿Ì¶ÈÓëÍø¸ñ"""
+        """åˆå§‹åŒ–æ—¶è°ƒç”¨ä¸€æ¬¡ï¼šåŒå±‚åˆ»åº¦ä¸ç½‘æ ¼"""
 
-        # ¡ª¡ª Y ÖáÃ¿ 20¡ãC ¡ª¡ª 
+        # â€”â€” Y è½´æ¯ 20Â°C â€”â€” 
         self.ax.yaxis.set_major_locator(MultipleLocator(20))
 
-        # ¡ª¡ª X ÖáÖ÷¿Ì¶È£ºÃ¿Ìì 1 ¸ö£¬Ö»ÏÔÊ¾ÔÂ-ÈÕ ¡ª¡ª 
+        # â€”â€” X è½´ä¸»åˆ»åº¦ï¼šæ¯å¤© 1 ä¸ªï¼Œåªæ˜¾ç¤ºæœˆ-æ—¥ â€”â€” 
         major_locator   = DayLocator()
         major_formatter = DateFormatter('%m-%d')
         self.ax.xaxis.set_major_locator(major_locator)
         self.ax.xaxis.set_major_formatter(major_formatter)
 
-        # ¨D¨D X Öá´Î¿Ì¶È£ºÃ¿ 30 ·ÖÖÓ 1 ¸ö£¬Ö»ÏÔÊ¾Ê±:·Ö ¨D¨D 
+        # â€•â€• X è½´æ¬¡åˆ»åº¦ï¼šæ¯ 30 åˆ†é’Ÿ 1 ä¸ªï¼Œåªæ˜¾ç¤ºæ—¶:åˆ† â€•â€• 
         minor_locator   = MinuteLocator(byminute=range(0, 60, 10))
         minor_formatter = DateFormatter('%H:%M')
         self.ax.xaxis.set_minor_locator(minor_locator)
         self.ax.xaxis.set_minor_formatter(minor_formatter)
 
-        '''# ¨D¨D ¶¯Ì¬´Î¿Ì¶È ¨D¨D
-        # ÏÈ¸øÒ»¸öÕ¼Î» formatter£¨ºóÃæ update_minor_locator »áÉèÖÃ locator£©  
+        '''# â€•â€• åŠ¨æ€æ¬¡åˆ»åº¦ â€•â€•
+        # å…ˆç»™ä¸€ä¸ªå ä½ formatterï¼ˆåé¢ update_minor_locator ä¼šè®¾ç½® locatorï¼‰  
         self.ax.xaxis.set_minor_formatter(DateFormatter('%H:%M'))
-        # È»ºóÂíÉÏÓÃ¶¯Ì¬Âß¼­È¥Ñ¡ locator  
+        # ç„¶åé©¬ä¸Šç”¨åŠ¨æ€é€»è¾‘å»é€‰ locator  
         #self.update_minor_locator()'''
 
-        # ¡ª¡ª Íø¸ñ£ºÖ÷/´Î¿Ì¶ÈÍø¸ñ¶¼»­³öÀ´ ¡ª¡ª 
+        # â€”â€” ç½‘æ ¼ï¼šä¸»/æ¬¡åˆ»åº¦ç½‘æ ¼éƒ½ç”»å‡ºæ¥ â€”â€” 
         self.ax.grid(which='major', linestyle='--', alpha=0.5)
         self.ax.grid(which='minor', linestyle=':',  alpha=0.3)
 
-        # ¡ª¡ª ±êÇ©Î»ÖÃÓëÆ«ÒÆ ¡ª¡ª 
-        # Ö÷£¨ÈÕÆÚ£©·ÅÉÏÃæ
+        # â€”â€” æ ‡ç­¾ä½ç½®ä¸åç§» â€”â€” 
+        # ä¸»ï¼ˆæ—¥æœŸï¼‰æ”¾ä¸Šé¢
         self.ax.xaxis.set_tick_params(which='major',
                                       labeltop=True, labelbottom=False, pad=10)
-        # ´Î£¨Ê±¼ä£©·ÅÏÂÃæ
+        # æ¬¡ï¼ˆæ—¶é—´ï¼‰æ”¾ä¸‹é¢
         self.ax.xaxis.set_tick_params(which='minor',
                                       labeltop=False, labelbottom=True, pad=5)
     
@@ -1088,28 +1113,28 @@ class ChamberGUI(tk.Tk):
 
     def update_minor_locator_without_draw(self):
         """
-        ¸ù¾İµ±Ç° xlim ¶¯Ì¬Ñ¡Ôñ´Î¿Ì¶È£º
-        - Èç¹û¿ç¶È < 1 Ìì£¬ÈÔÓÃ·ÖÖÓ¿Ì¶È£¨10/20/30/60 ·ÖÖÓ±¶Êı£©
-        - Èç¹û¿ç¶È ¡İ 1 Ìì£¬¸ÄÓÃĞ¡Ê±¿Ì¶È£¬¼ä¸ô = ceil(¿ç¶ÈÌìÊı / Ä¿±êĞ¡Ê±¿Ì¶ÈÊı)
-        Ä¿±ê´Î¿Ì¶ÈÊı±£³ÖÔÚ ~10 ÒÔÄÚ£¬±£Ö¤²»Óµ¼·¡£
+        æ ¹æ®å½“å‰ xlim åŠ¨æ€é€‰æ‹©æ¬¡åˆ»åº¦ï¼š
+        - å¦‚æœè·¨åº¦ < 1 å¤©ï¼Œä»ç”¨åˆ†é’Ÿåˆ»åº¦ï¼ˆ10/20/30/60 åˆ†é’Ÿå€æ•°ï¼‰
+        - å¦‚æœè·¨åº¦ â‰¥ 1 å¤©ï¼Œæ”¹ç”¨å°æ—¶åˆ»åº¦ï¼Œé—´éš” = ceil(è·¨åº¦å¤©æ•° / ç›®æ ‡å°æ—¶åˆ»åº¦æ•°)
+        ç›®æ ‡æ¬¡åˆ»åº¦æ•°ä¿æŒåœ¨ ~10 ä»¥å†…ï¼Œä¿è¯ä¸æ‹¥æŒ¤ã€‚
         """
         x0, x1 = self.ax.get_xlim()
         span_days = x1 - x0
         span_minutes = span_days * 24 * 60
 
-        # Ä¿±ê´Î¿Ì¶ÈÊı
+        # ç›®æ ‡æ¬¡åˆ»åº¦æ•°
         target_ticks = 10
 
         if span_days < 1.0:
-            # ¿ç¶È < 1 Ìì£º¼ÌĞøÓÃ·ÖÖÓ±¶Êı
+            # è·¨åº¦ < 1 å¤©ï¼šç»§ç»­ç”¨åˆ†é’Ÿå€æ•°
             candidates = [240,120,60, 30, 20, 10,5,1]
-            # Ñ¡³ö×î½Ó½ü target_ticks ¶ÎÊıµÄ·ÖÖÓºòÑ¡
+            # é€‰å‡ºæœ€æ¥è¿‘ target_ticks æ®µæ•°çš„åˆ†é’Ÿå€™é€‰
             best = min(candidates,
                        key=lambda intr: abs(span_minutes / intr - target_ticks))
-            # Èç¹û¼ä¸ôĞ¡ÓÚ60·ÖÖÓ£¬ÔòÉèÖÃÎª·ÖÖÓ¿Ì¶È
+            # å¦‚æœé—´éš”å°äº60åˆ†é’Ÿï¼Œåˆ™è®¾ç½®ä¸ºåˆ†é’Ÿåˆ»åº¦
             if best<=60:
                 self._minor_locator = MinuteLocator(byminute=range(0, 60, best))
-            # Èç¹û¼ä¸ôÎª120»ò240£¬ÔòÉèÖÃÎªĞ¡Ê±¿Ì¶È
+            # å¦‚æœé—´éš”ä¸º120æˆ–240ï¼Œåˆ™è®¾ç½®ä¸ºå°æ—¶åˆ»åº¦
             else:
                 self._minor_locator = HourLocator(interval=int(best/60))
 
@@ -1117,66 +1142,66 @@ class ChamberGUI(tk.Tk):
 
 
         else:
-            # ¿ç¶È ¡İ 1 Ìì£ºÓÃĞ¡Ê±¿Ì¶È
-            # ¼ÆËã¿ç¶ÈĞ¡Ê±Êı
+            # è·¨åº¦ â‰¥ 1 å¤©ï¼šç”¨å°æ—¶åˆ»åº¦
+            # è®¡ç®—è·¨åº¦å°æ—¶æ•°
             span_hours = span_days * 24
-            # Ã¿¸ô¶àÉÙĞ¡Ê±Ò»¸ö¿Ì¶È£¬Ê¹µÃµ½ ~target_ticks ¶Î
+            # æ¯éš”å¤šå°‘å°æ—¶ä¸€ä¸ªåˆ»åº¦ï¼Œä½¿å¾—åˆ° ~target_ticks æ®µ
             interval_hours = max(1, math.ceil(span_hours / target_ticks))
             self._minor_locator = HourLocator(interval=interval_hours)
 
-            # Ó¦ÓÃĞÂµÄ´Î¿Ì¶È
+            # åº”ç”¨æ–°çš„æ¬¡åˆ»åº¦
             self.ax.xaxis.set_minor_locator(self._minor_locator)
-            # ¸ñÊ½»¯±êÇ©£º·ÖÖÓ¿Ì¶ÈÏÔÊ¾ HH:MM£¬Ğ¡Ê±¿Ì¶È½öÏÔÊ¾ HH
+            # æ ¼å¼åŒ–æ ‡ç­¾ï¼šåˆ†é’Ÿåˆ»åº¦æ˜¾ç¤º HH:MMï¼Œå°æ—¶åˆ»åº¦ä»…æ˜¾ç¤º HH
             fmt = '%H:%M' if span_days < 1.0 else '%H:%M'
             self.ax.xaxis.set_minor_formatter(mdates.DateFormatter(fmt))
 
     def on_plot_click(self, event):
-        """´¦ÀíÊó±êµã»÷ÊÂ¼ş"""
-        if event.button != 1:  # Ö»´¦Àí×ó¼üµã»÷
+        """å¤„ç†é¼ æ ‡ç‚¹å‡»äº‹ä»¶"""
+        if event.button != 1:  # åªå¤„ç†å·¦é”®ç‚¹å‡»
             return
-        if event.inaxes != self.ax:  # È·±£µã»÷ÔÚ»æÍ¼ÇøÓòÄÚ
+        if event.inaxes != self.ax:  # ç¡®ä¿ç‚¹å‡»åœ¨ç»˜å›¾åŒºåŸŸå†…
             return
 
         all_points = []
-        # »ñÈ¡ËùÓĞÏßÌõÉÏµÄµã
+        # è·å–æ‰€æœ‰çº¿æ¡ä¸Šçš„ç‚¹
         for line in self.ax.get_lines():
-            xdata = mdates.num2date(line.get_xdata())  # ×ª»»Îªdatetime¶ÔÏó
+            xdata = mdates.num2date(line.get_xdata())  # è½¬æ¢ä¸ºdatetimeå¯¹è±¡
             ydata = line.get_ydata()
             for x, y in zip(xdata, ydata):
                 all_points.append((x, y))
 
-        # »ñÈ¡ËùÓĞÉ¢µã
+        # è·å–æ‰€æœ‰æ•£ç‚¹
         for collection in self.ax.collections:
-            if isinstance(collection, matplotlib.collections.PathCollection):  # È·±£ÊÇÉ¢µã¼¯ºÏ
+            if isinstance(collection, matplotlib.collections.PathCollection):  # ç¡®ä¿æ˜¯æ•£ç‚¹é›†åˆ
                 offsets = collection.get_offsets()
                 for point in offsets:
-                    x = mdates.num2date(point[0])  # ×ª»»x×ø±êÎªdatetime¶ÔÏó
+                    x = mdates.num2date(point[0])  # è½¬æ¢xåæ ‡ä¸ºdatetimeå¯¹è±¡
                     y = point[1]
                     all_points.append((x, y))
 
-        if not all_points:  # Èç¹ûÃ»ÓĞµã£¬Ö±½Ó·µ»Ø
+        if not all_points:  # å¦‚æœæ²¡æœ‰ç‚¹ï¼Œç›´æ¥è¿”å›
             return
-        # »ñÈ¡µ±Ç°Í¼±íµÄÊ±¼ä·¶Î§ºÍÎÂ¶È·¶Î§
+        # è·å–å½“å‰å›¾è¡¨çš„æ—¶é—´èŒƒå›´å’Œæ¸©åº¦èŒƒå›´
         x_min, x_max = self.ax.get_xlim()
         y_min, y_max = self.ax.get_ylim()
-        x_range = x_max - x_min  # Ê±¼ä·¶Î§
-        y_range = y_max - y_min  # ÎÂ¶È·¶Î§
-        # ¼ÆËãµã»÷Î»ÖÃµ½ËùÓĞµãµÄ¾àÀë
+        x_range = x_max - x_min  # æ—¶é—´èŒƒå›´
+        y_range = y_max - y_min  # æ¸©åº¦èŒƒå›´
+        # è®¡ç®—ç‚¹å‡»ä½ç½®åˆ°æ‰€æœ‰ç‚¹çš„è·ç¦»
         click_time = mdates.num2date(event.xdata)
         min_dist = float('inf')
         nearest_point = None
         nearest_points = []
 
         for point in all_points:
-            # ¹éÒ»»¯Ê±¼ä²îºÍÎÂ¶È²î
+            # å½’ä¸€åŒ–æ—¶é—´å·®å’Œæ¸©åº¦å·®
             time_diff = abs((point[0] - click_time).total_seconds() / 60)
             temp_diff = abs(point[1] - event.ydata)
         
-            # ½«Ê±¼ä²îºÍÎÂ¶È²î¶¼¹éÒ»»¯µ½0-1·¶Î§ÄÚ
-            normalized_time_diff = time_diff / (x_range * 24 * 60)  # ×ª»»Îª0-1·¶Î§
-            normalized_temp_diff = temp_diff / y_range  # ×ª»»Îª0-1·¶Î§
+            # å°†æ—¶é—´å·®å’Œæ¸©åº¦å·®éƒ½å½’ä¸€åŒ–åˆ°0-1èŒƒå›´å†…
+            normalized_time_diff = time_diff / (x_range * 24 * 60)  # è½¬æ¢ä¸º0-1èŒƒå›´
+            normalized_temp_diff = temp_diff / y_range  # è½¬æ¢ä¸º0-1èŒƒå›´
         
-            # Ê¹ÓÃ¹éÒ»»¯ºóµÄÖµ¼ÆËã¾àÀë
+            # ä½¿ç”¨å½’ä¸€åŒ–åçš„å€¼è®¡ç®—è·ç¦»
             dist = math.sqrt(normalized_time_diff**2 + normalized_temp_diff**2)
         
             if dist < min_dist:
@@ -1185,36 +1210,36 @@ class ChamberGUI(tk.Tk):
             elif dist == min_dist:
                 nearest_points.append(point)
 
-        # Èç¹ûÓĞ¶à¸ö×î½üµã£¬Ñ¡ÔñÊ±¼ä×îÔçµÄ
+        # å¦‚æœæœ‰å¤šä¸ªæœ€è¿‘ç‚¹ï¼Œé€‰æ‹©æ—¶é—´æœ€æ—©çš„
         if nearest_points:
             nearest_point = min(nearest_points, key=lambda x: x[0])
 
-        # ÒÆ³ıÖ®Ç°µÄ±ê×¢ºÍÔ²»·£¨Èç¹ûÓĞ£©
+        # ç§»é™¤ä¹‹å‰çš„æ ‡æ³¨å’Œåœ†ç¯ï¼ˆå¦‚æœæœ‰ï¼‰
         for txt in self.ax.texts:
             if hasattr(txt, 'is_point_label'):
                 txt.remove()
     
-        # ÒÆ³ıÖ®Ç°µÄÔ²»·
+        # ç§»é™¤ä¹‹å‰çš„åœ†ç¯
         for circle in self.ax.patches:
             if hasattr(circle, 'is_highlight_circle'):
                 circle.remove()
 
-        # Ìí¼ÓĞÂ±ê×¢ºÍÔ²»·
+        # æ·»åŠ æ–°æ ‡æ³¨å’Œåœ†ç¯
         if nearest_point:
-            # Ìí¼ÓÎÄ±¾±ê×¢
-            label_text = f'{nearest_point[0].strftime("%H:%M:%S")} \n{nearest_point[1]:.1f}¡æ'
-            # ¼ÆËã±ê×¢Î»ÖÃµÄÆ«ÒÆÁ¿
-            # »ñÈ¡µ±Ç°×ø±êÖáµÄ·¶Î§
+            # æ·»åŠ æ–‡æœ¬æ ‡æ³¨
+            label_text = f'{nearest_point[0].strftime("%H:%M:%S")} \n{nearest_point[1]:.1f}â„ƒ'
+            # è®¡ç®—æ ‡æ³¨ä½ç½®çš„åç§»é‡
+            # è·å–å½“å‰åæ ‡è½´çš„èŒƒå›´
             x_min, x_max = self.ax.get_xlim()
             y_min, y_max = self.ax.get_ylim()
-            # ¼ÆËãºá×İ±ÈÀı
+            # è®¡ç®—æ¨ªçºµæ¯”ä¾‹
             x_range = x_max - x_min
             y_range = y_max - y_min
-            # ¼ÆËãÆ«ÒÆÁ¿£¨ÏòÓÒÉÏ·½Æ«ÒÆ£©
-            x_offset = x_range * 0.02  # xÖáÆ«ÒÆ2%
-            y_offset = y_range * 0.02  # yÖáÆ«ÒÆ2%
+            # è®¡ç®—åç§»é‡ï¼ˆå‘å³ä¸Šæ–¹åç§»ï¼‰
+            x_offset = x_range * 0.02  # xè½´åç§»2%
+            y_offset = y_range * 0.02  # yè½´åç§»2%
         
-            # Ìí¼ÓÎÄ±¾±ê×¢£¬Î»ÖÃÔÚµãµÄÓÒÉÏ·½
+            # æ·»åŠ æ–‡æœ¬æ ‡æ³¨ï¼Œä½ç½®åœ¨ç‚¹çš„å³ä¸Šæ–¹
             text = self.ax.text(
                 mdates.date2num(nearest_point[0]) + x_offset, 
                 nearest_point[1] + y_offset,
@@ -1225,19 +1250,19 @@ class ChamberGUI(tk.Tk):
             )
             text.is_point_label = True
 
-            # ¼ÆËã×ø±êÖáµÄÊµ¼Ê±ÈÀı
+            # è®¡ç®—åæ ‡è½´çš„å®é™…æ¯”ä¾‹
             fig_width = self.figure.get_figwidth()
             fig_height = self.figure.get_figheight()
         
-            # ¼ÆËãÊµ¼ÊµÄÏÔÊ¾±ÈÀı
+            # è®¡ç®—å®é™…çš„æ˜¾ç¤ºæ¯”ä¾‹
             display_ratio = (x_range / fig_width) / (y_range / fig_height)
         
-            # ´´½¨ÍÖÔ²£¬¸ù¾İÏÔÊ¾±ÈÀıµ÷Õûºá×İ°ë¾¶
-            radius = (y_max - y_min) * 0.05  # »ù´¡°ë¾¶£¬¿ÉÒÔ¸ù¾İĞèÒªµ÷Õû
+            # åˆ›å»ºæ¤­åœ†ï¼Œæ ¹æ®æ˜¾ç¤ºæ¯”ä¾‹è°ƒæ•´æ¨ªçºµåŠå¾„
+            radius = (y_max - y_min) * 0.05  # åŸºç¡€åŠå¾„ï¼Œå¯ä»¥æ ¹æ®éœ€è¦è°ƒæ•´
             ellipse = Ellipse(
                 (mdates.date2num(nearest_point[0]), nearest_point[1]),
-                width=radius * display_ratio,  # ºáÏò°ë¾¶
-                height=radius,  # ×İÏò°ë¾¶
+                width=radius * display_ratio,  # æ¨ªå‘åŠå¾„
+                height=radius,  # çºµå‘åŠå¾„
                 fill=False,
                 color='orange',
                 linewidth=0.5
@@ -1248,9 +1273,9 @@ class ChamberGUI(tk.Tk):
             self.canvas.draw_idle()
 
     def on_scroll(self, event):
-        """Êó±ê¹öÂÖËõ·Å£¬ÖĞĞÄÔÚÊó±êÎ»ÖÃ"""
+        """é¼ æ ‡æ»šè½®ç¼©æ”¾ï¼Œä¸­å¿ƒåœ¨é¼ æ ‡ä½ç½®"""
         base_scale = 1.1
-        # È·¶¨ÊÇËõ·Å X »¹ÊÇ Y
+        # ç¡®å®šæ˜¯ç¼©æ”¾ X è¿˜æ˜¯ Y
         cur_xlim = self.ax.get_xlim()
         cur_ylim = self.ax.get_ylim()
         xdata, ydata = event.xdata, event.ydata
@@ -1268,11 +1293,11 @@ class ChamberGUI(tk.Tk):
         #rely = (cur_ylim[1] - ydata) / (cur_ylim[1] - cur_ylim[0])
         self.ax.set_xlim(xdata - new_width * (1 - relx),
                          xdata + new_width * (relx))
-        # ¹öÂÖ½ö¶ÔxÖáÉúĞ§
+        # æ»šè½®ä»…å¯¹xè½´ç”Ÿæ•ˆ
         #self.ax.set_ylim(ydata - new_height * (1 - rely), ydata + new_height * (rely))
         self.update_minor_locator()
 
-    # ¡ª¡ª¡ª¡ª Ëõ·ÅºÍÆ½ÒÆº¯Êı ¡ª¡ª¡ª¡ª
+    # â€”â€”â€”â€” ç¼©æ”¾å’Œå¹³ç§»å‡½æ•° â€”â€”â€”â€”
     def zoom_y_in(self):
         y0, y1 = self.ax.get_ylim()
         dy = (y1 - y0) * 0.2
@@ -1323,8 +1348,8 @@ class ChamberGUI(tk.Tk):
 
 
     def plot_log_data(self):
-        """Ö»¼ÓÔØµ±Ç°ÈÕÖ¾ºÍÉÏÒ»¸ö¹éµµÈÕÖ¾£¬»æÖÆËùÓĞµã£¬±£ÁôÔ¤ÀÀÕÛÏß"""
-        # 1. ÕÒµ½ËùÓĞÈÕÖ¾ÎÄ¼ş£¬°´ĞŞ¸ÄÊ±¼äÅÅĞò
+        """åªåŠ è½½å½“å‰æ—¥å¿—å’Œä¸Šä¸€ä¸ªå½’æ¡£æ—¥å¿—ï¼Œç»˜åˆ¶æ‰€æœ‰ç‚¹ï¼Œä¿ç•™é¢„è§ˆæŠ˜çº¿"""
+        # 1. æ‰¾åˆ°æ‰€æœ‰æ—¥å¿—æ–‡ä»¶ï¼ŒæŒ‰ä¿®æ”¹æ—¶é—´æ’åº
         pattern = os.path.join(os.getcwd(), "ChamCtrlLog*.txt")
         files = glob.glob(pattern)
         if not files:
@@ -1332,7 +1357,7 @@ class ChamberGUI(tk.Tk):
         files.sort(key=lambda f: os.path.getmtime(f))
         to_load = files[-2:] if len(files) >= 2 else files[-1:]
 
-        # 3. ¸üĞÂºìÉ«Ô¤ÀÀÕÛÏßµÄÊı¾İ£¨Èç¹ûÓĞµÄ»°£©
+        # 3. æ›´æ–°çº¢è‰²é¢„è§ˆæŠ˜çº¿çš„æ•°æ®ï¼ˆå¦‚æœæœ‰çš„è¯ï¼‰
         prev = None
         for ln in self.ax.get_lines():
             if ln.get_label() == "_wave_preview":
@@ -1344,7 +1369,7 @@ class ChamberGUI(tk.Tk):
             x, y = prev.get_xdata(), prev.get_ydata()
             self.preview_line.set_data(x, y)
 
-        # 6. ¶ÁÈ¡ÈÕÖ¾Êı¾İ²¢»æÖÆÀ¶É«É¢µã
+        # 6. è¯»å–æ—¥å¿—æ•°æ®å¹¶ç»˜åˆ¶è“è‰²æ•£ç‚¹
         times, temps = [], []
         for filepath in to_load:
             try:
@@ -1364,7 +1389,7 @@ class ChamberGUI(tk.Tk):
             except OSError:
                 continue
 
-        # ===== Ê±¼ä¹ıÂË£¨½ö±£Áô×î½ü 2 ÌìÄÚµÄÊı¾İ£©=====
+        # ===== æ—¶é—´è¿‡æ»¤ï¼ˆä»…ä¿ç•™æœ€è¿‘ 2 å¤©å†…çš„æ•°æ®ï¼‰=====
         now = dt.datetime.now()
         cutoff = now.replace(hour=0, minute=0, second=0, microsecond=0) - dt.timedelta(days=1)
         filtered = [(t, temp) for t, temp in zip(times, temps) if t >= cutoff]
@@ -1372,52 +1397,52 @@ class ChamberGUI(tk.Tk):
             return
         times, temps = zip(*filtered)
 
-        # ===== ¶¯Ì¬³éÑù£¨×î¶à 1000 ¸öµã£©=====
+        # ===== åŠ¨æ€æŠ½æ ·ï¼ˆæœ€å¤š 1000 ä¸ªç‚¹ï¼‰=====
         #max_points = 1000
         max_points = max(500, int(self.canvas.get_tk_widget().winfo_width() / 2))
         n = len(times)
         if n > max_points:
-            idx = np.linspace(0, n - 1, max_points, dtype=int)
+            idx = numpy.linspace(0, n - 1, max_points, dtype=int)
             times = [times[i] for i in idx]
             temps = [temps[i] for i in idx]
 
         #if times and temps:
             #self.ax.scatter(times, temps, s=10, color='blue')
 
-        # 4. ¸üĞÂÀ¶É«É¢µãµÄÊı¾İ
+        # 4. æ›´æ–°è“è‰²æ•£ç‚¹çš„æ•°æ®
         if times and temps:
             # Matplotlib wants Nx2 array of floats
             pts = [(mdates.date2num(t), temp) for t, temp in zip(times, temps)]
             self.data_scatter.set_offsets(pts)
         else:
-            # no data ¡ú clear scatter
+            # no data â†’ clear scatter
             #self.data_scatter.set_offsets([])
-            self.data_scatter.set_offsets(np.empty((0, 2)))
+            self.data_scatter.set_offsets(numpy.empty((0, 2)))
 
-        # 8. Èô¿ªÆô×Ô¶¯¾ÓÖĞ£¬Ôò¾ÓÖĞÊ±¼äÖá
+        # 8. è‹¥å¼€å¯è‡ªåŠ¨å±…ä¸­ï¼Œåˆ™å±…ä¸­æ—¶é—´è½´
         if self.auto_center == 1:
             self.center_now_without_draw()
 
-        # 9. Èô¿ªÆô×Ô¶¯±ê¼Ç£¬Ôò±ê¼ÇĞÂ³öÏÖµÄµã
+        # 9. è‹¥å¼€å¯è‡ªåŠ¨æ ‡è®°ï¼Œåˆ™æ ‡è®°æ–°å‡ºç°çš„ç‚¹
         if self.auto_mark == 1:
             self.mark_new_point_without_draw()
 
-        # 7. Ë¢ĞÂ»­²¼
+        # 7. åˆ·æ–°ç”»å¸ƒ
         self.canvas.draw_idle()
 
     def toggle_connection(self):
-        """Connect/Disconnect °´Å¥»Øµ÷£¬ÏÈ´ÓÏÂÀ­¿ò½âÎö IP"""
-        # Èç¹û»¹Ã»Á¬½Ó£¬Ôò³¢ÊÔÁ¬½Ó
+        """Connect/Disconnect æŒ‰é’®å›è°ƒï¼Œå…ˆä»ä¸‹æ‹‰æ¡†è§£æ IP"""
+        # å¦‚æœè¿˜æ²¡è¿æ¥ï¼Œåˆ™å°è¯•è¿æ¥
         if not self.chamber:
-            # ´ÓÑ¡ÏîÖĞÌáÈ¡ IP£¨"ChamberXX:IP" ¡ú IP£©
+            # ä»é€‰é¡¹ä¸­æå– IPï¼ˆ"ChamberXX:IP" â†’ IPï¼‰
             selection = self.selected_ip.get()           # e.g. "Chamber06:10.166.156.173"
             port = int(self.selected_port.get())
             try:
-                ip = selection.split(":", 1)[1]          # ÄÃµ½ "10.166.156.173"
+                ip = selection.split(":", 1)[1]          # æ‹¿åˆ° "10.166.156.173"
             except IndexError:
                 messagebox.showerror("Error", "Invalid selection")
                 return
-            # ³¢ÊÔÁ¬½Ó
+            # å°è¯•è¿æ¥
             self.chamber = Chamber(ip,port)
             if self.chamber.connect():
                 self.conn_btn.config(text="Disconnect")
@@ -1429,7 +1454,7 @@ class ChamberGUI(tk.Tk):
                 messagebox.showerror("Error", f"Could not connect to {ip}")
                 self.chamber = None
         else:
-            # ÒÑÁ¬½ÓÊ±¶Ï¿ª
+            # å·²è¿æ¥æ—¶æ–­å¼€
             self._stop_polling()
             self.chamber.close()
             self.chamber = None
@@ -1448,75 +1473,75 @@ class ChamberGUI(tk.Tk):
         self._running = False
         self._running = False
         if self._poll_thread and self._poll_thread.is_alive():
-            self._poll_thread.join(timeout=2)  # µÈ´ıÂÖÑ¯Ïß³Ì½áÊø£¬×î¶àµÈ´ı2Ãë
+            self._poll_thread.join(timeout=2)  # ç­‰å¾…è½®è¯¢çº¿ç¨‹ç»“æŸï¼Œæœ€å¤šç­‰å¾…2ç§’
 
     def _poll_loop(self):
         if not self._running:
             return
         self.after(10000, self._poll_loop)
-        # 1. ¼ì²é chamber ÊÇ·ñÓĞĞ§ Èç¹ûÃ»ÓĞÁ¬½Ó£¬ÍË³ö
+        # 1. æ£€æŸ¥ chamber æ˜¯å¦æœ‰æ•ˆ å¦‚æœæ²¡æœ‰è¿æ¥ï¼Œé€€å‡º
         if not self.chamber:
             return
-        # ¶ÁÈ¡ÎÂÏä×´Ì¬
+        # è¯»å–æ¸©ç®±çŠ¶æ€
         status_code = self.chamber.get_run_status()
         if not self.chamber:
             return
-        # ¶ÁÈ¡ÎÂÏäÎÂ¶È
+        # è¯»å–æ¸©ç®±æ¸©åº¦
         temp_value = self.chamber.get_temp()
         target_temp_value = self.chamber.get_target_temp()
         run_mode_value = self.chamber.get_run_type()
-        # »ñÈ¡µ±Ç°ÈÕÆÚºÍÊ±¼ä
+        # è·å–å½“å‰æ—¥æœŸå’Œæ—¶é—´
         now = dt.datetime.now()
         date_str = now.strftime("%Y-%m-%d")
         time_str = now.strftime("%H:%M:%S")
-        # ¸üĞÂ UI
+        # æ›´æ–° UI
         self.after(0, lambda s=status_code, t=temp_value, tt=target_temp_value,rm=run_mode_value: self._update_ui(s, t,tt,rm))
-        # Ö»Òª¶Áµ½ÓĞĞ§ÎÂ¶È£¬¾ÍĞ´Èë¡°ÎÂ¶È Ê±¼ä¡±£¬Èç¹û½ñÌìÊ×´ÎĞ´Èë£¬ÔòÔÚÄ©Î²¼ÓÉÏ¡° ÈÕÆÚ¡±
+        # åªè¦è¯»åˆ°æœ‰æ•ˆæ¸©åº¦ï¼Œå°±å†™å…¥â€œæ¸©åº¦ æ—¶é—´â€ï¼Œå¦‚æœä»Šå¤©é¦–æ¬¡å†™å…¥ï¼Œåˆ™åœ¨æœ«å°¾åŠ ä¸Šâ€œ æ—¥æœŸâ€
         if temp_value is not None:
-            # ÈÕÖ¾¹ö¶¯¼ì²é
+            # æ—¥å¿—æ»šåŠ¨æ£€æŸ¥
             self.write_count += 1
             if self.write_count >= 1000:
                 self._rollover_if_needed()
                 self.write_count = 0
 
-            # Ã¿´Î¶¼¼ÇÂ¼ÎÂ¶È¡¢Ê±¼äºÍÈÕÆÚ
+            # æ¯æ¬¡éƒ½è®°å½•æ¸©åº¦ã€æ—¶é—´å’Œæ—¥æœŸ
             line = f"{temp_value:.2f} {time_str} {date_str}\n"
             self.log_file.write(line)
             self.log_file.flush()
-            # ¸üĞÂÇúÏß£ºÔöÁ¿Ìí¼ÓĞÂµã²¢ÖØ»æ
+            # æ›´æ–°æ›²çº¿ï¼šå¢é‡æ·»åŠ æ–°ç‚¹å¹¶é‡ç»˜
             self.after(0, self.plot_log_data)
 
 
     def _rollover_if_needed(self):
-        #µ±´ïµ½Ğ´ÈëãĞÖµºó£¬¼ì²éÎÄ¼ş´óĞ¡²¢ÔÚ >10MB Ê±¹ö¶¯ÈÕÖ¾
+        #å½“è¾¾åˆ°å†™å…¥é˜ˆå€¼åï¼Œæ£€æŸ¥æ–‡ä»¶å¤§å°å¹¶åœ¨ >10MB æ—¶æ»šåŠ¨æ—¥å¿—
         try:
             self.log_file.flush()
             size = os.path.getsize(self.log_path)
         except OSError:
             size = 0
-        # Èç¹û³¬¹ı 10 MB£¬Ö´ĞĞ¹ö¶¯
+        # å¦‚æœè¶…è¿‡ 10 MBï¼Œæ‰§è¡Œæ»šåŠ¨
         if size > 10 * 1024 * 1024:
-            # ¸ñÊ½»¯Ê±¼ä´Á
+            # æ ¼å¼åŒ–æ—¶é—´æˆ³
             ts = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
             new_name = f"ChamCtrlLog-{ts}.txt"
-            new_path = os.path.join(self.log_dir, new_name)
-            # ¹Ø±Õ²¢ÖØÃüÃû¾ÉÈÕÖ¾
+            new_path = os.path.join(os.getcwd(), new_name)
+            # å…³é—­å¹¶é‡å‘½åæ—§æ—¥å¿—
             self.log_file.close()
             os.replace(self.log_path, new_path)
-            # ´ò¿ªĞÂµÄÈÕÖ¾ÎÄ¼ş
+            # æ‰“å¼€æ–°çš„æ—¥å¿—æ–‡ä»¶
             self.log_file = open(self.log_path, "a+", encoding="utf-8")
-            # ĞÂÎÄ¼şµÚÒ»´ÎĞ´ÈëĞè°üº¬ÈÕÆÚ
+            # æ–°æ–‡ä»¶ç¬¬ä¸€æ¬¡å†™å…¥éœ€åŒ…å«æ—¥æœŸ
             #self.last_log_date = None
-        # ÖØÖÃĞ´Èë¼ÆÊı
+        # é‡ç½®å†™å…¥è®¡æ•°
         self.write_count = 0
 
     def _update_ui(self, status_code, temp_value, target_temp_value, run_mode_value):
-        # ¸üĞÂÔËĞĞ×´Ì¬
-        text = ({0:"Constant Mode",1:"Viarable Mode",2:"Constant Humidity",3:"Viarable Humidity"}.get(run_mode_value, "error")+', '+{0:"Stop",1:"Run",2:"Pause"}.get(status_code, "error"))
+        # æ›´æ–°è¿è¡ŒçŠ¶æ€
+        text = ({0:"Constant Mode",1:"Variable Mode",2:"Constant Humidity",3:"Variable Humidity"}.get(run_mode_value, "error")+', '+{0:"Stop",1:"Run",2:"Pause"}.get(status_code, "error"))
         self.status_var.set(text)
-        # ¸üĞÂÎÂ¶È
-        self.temp_var.set(f"{temp_value:.2f} ¡ãC" if temp_value is not None else "--")
-        # ¸üĞÂÄ¿±êÎÂ¶È
+        # æ›´æ–°æ¸©åº¦
+        self.temp_var.set(f"{temp_value:.2f} Â°C" if temp_value is not None else "--")
+        # æ›´æ–°ç›®æ ‡æ¸©åº¦
         self.target_temp_label_var.set(f"{target_temp_value:.2f}" if target_temp_value is not None else "--")
 
     def on_set_temp(self):
@@ -1529,7 +1554,7 @@ class ChamberGUI(tk.Tk):
             messagebox.showerror("error", "wrong temp number")
             return
         if self.chamber.set_temp(t):
-            messagebox.showinfo("pass", f"temp set as {t} ¡ãC")
+            messagebox.showinfo("pass", f"temp set as {t} Â°C")
         else:
             messagebox.showerror("fail", "temp set fail")
 
@@ -1540,33 +1565,33 @@ class ChamberGUI(tk.Tk):
         self.after(1000, self.update_datetime)
 
     def on_close(self):
-        """´°¿Ú¹Ø±ÕÊ±£¬±£´æ IP ºÍ²¨ĞÎÉèÖÃÎÄ±¾£¬²¢ÍË³ö"""
+        """çª—å£å…³é—­æ—¶ï¼Œä¿å­˜ IP å’Œæ³¢å½¢è®¾ç½®æ–‡æœ¬ï¼Œå¹¶é€€å‡º"""
         config = configparser.ConfigParser()
-        # Èç¹ûÒÑÓĞ ini£¬ÔòÏÈ¶ÁÈ¡±£ÁôÆäËü×Ö¶Î
+        # å¦‚æœå·²æœ‰ iniï¼Œåˆ™å…ˆè¯»å–ä¿ç•™å…¶å®ƒå­—æ®µ
         if os.path.exists(self.ini_path):
             try:
                 config.read(self.ini_path, encoding="utf-8")
             except Exception:
                 pass
 
-        # ±£´æÑ¡ÖĞµÄ IP
+        # ä¿å­˜é€‰ä¸­çš„ IP
         cur = self.selected_ip.get().strip()
         if cur:
             config["DEFAULT"]["last_ip"] = cur
 
-        # ±£´æ¶àĞĞÎÄ±¾¿òÄÚÈİ
+        # ä¿å­˜å¤šè¡Œæ–‡æœ¬æ¡†å†…å®¹
         wt = self.wave_text.get("1.0", tk.END).rstrip("\n")
         if wt:
             config["DEFAULT"]["wave_text"] = wt
 
-        # Ğ´»Ø ini ÎÄ¼ş
+        # å†™å› ini æ–‡ä»¶
         try:
             with open(self.ini_path, "w", encoding="utf-8") as f:
                 config.write(f)
         except Exception as e:
             messagebox.showwarning("Warning", f"Failed to save settings:\n{e}")
 
-        # Í£Ö¹ºóÌ¨¡¢¹Ø±ÕÈÕÖ¾µÈÔ­ÓĞÂß¼­
+        # åœæ­¢åå°ã€å…³é—­æ—¥å¿—ç­‰åŸæœ‰é€»è¾‘
         self._stop_polling()
         if self.log_file:
             self.log_file.close()
