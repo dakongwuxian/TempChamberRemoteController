@@ -1,3 +1,6 @@
+
+<img width="861" height="756" alt="image" src="https://github.com/user-attachments/assets/56330305-3fda-4bef-b2ec-ec4c0dc18baf" />
+
 # TempChamberRemoteController
 This is a GUI tool running on Windosws OS for remote controlling temperature chamber which produced by “重庆银河试验”.
 
