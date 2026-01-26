@@ -1050,6 +1050,7 @@ class ChamberGUI(tk.Tk):
             horizontalalignment='left'
         )
         txt.is_point_label = True
+        txt.is_auto_mark = True  # 标记为 auto_mark 产生的
         self._mark_artists.append(txt)
 
         # 5. 创建黄色圆环
@@ -1067,6 +1068,7 @@ class ChamberGUI(tk.Tk):
             linewidth=1.5
         )
         circ.is_highlight_circle = True
+        circ.is_auto_mark = True  # 标记为 auto_mark 产生的
         self.ax.add_patch(circ)
         self._mark_artists.append(circ)
 
@@ -1215,13 +1217,14 @@ class ChamberGUI(tk.Tk):
             nearest_point = min(nearest_points, key=lambda x: x[0])
 
         # 移除之前的标注和圆环（如果有）
-        for txt in self.ax.texts:
-            if hasattr(txt, 'is_point_label'):
+        # 只移除点击产生的标记，不移除 auto_mark 产生的标记
+        for txt in list(self.ax.texts):
+            if hasattr(txt, 'is_point_label') and not hasattr(txt, 'is_auto_mark'):
                 txt.remove()
     
         # 移除之前的圆环
-        for circle in self.ax.patches:
-            if hasattr(circle, 'is_highlight_circle'):
+        for circle in list(self.ax.patches):
+            if hasattr(circle, 'is_highlight_circle') and not hasattr(circle, 'is_auto_mark'):
                 circle.remove()
 
         # 添加新标注和圆环
@@ -1396,15 +1399,36 @@ class ChamberGUI(tk.Tk):
         if not filtered:
             return
         times, temps = zip(*filtered)
+        # 转换为列表，以便后续操作
+        times = list(times)
+        temps = list(temps)
 
-        # ===== 动态抽样（最多 1000 个点）=====
-        #max_points = 1000
+        # ===== 动态抽样（最多 1000 个点，但保留最近100个点不抽样）=====
         max_points = max(500, int(self.canvas.get_tk_widget().winfo_width() / 2))
+        recent_keep = 100  # 保留最近100个点不抽样
         n = len(times)
-        if n > max_points:
-            idx = numpy.linspace(0, n - 1, max_points, dtype=int)
-            times = [times[i] for i in idx]
-            temps = [temps[i] for i in idx]
+        
+        if n > max_points and n > recent_keep:
+            # 历史数据：除了最近100个点之外的所有点
+            history_times = times[:-recent_keep]
+            history_temps = temps[:-recent_keep]
+            # 最近数据：最后100个点
+            recent_times = times[-recent_keep:]
+            recent_temps = temps[-recent_keep:]
+            
+            # 对历史数据进行抽样
+            history_n = len(history_times)
+            history_max = max_points - recent_keep  # 历史数据最多显示的点数
+            
+            if history_n > history_max:
+                # 对历史数据抽样
+                idx = numpy.linspace(0, history_n - 1, history_max, dtype=int)
+                history_times = [history_times[i] for i in idx]
+                history_temps = [history_temps[i] for i in idx]
+            
+            # 合并历史数据和最近数据
+            times = history_times + recent_times
+            temps = history_temps + recent_temps
 
         #if times and temps:
             #self.ax.scatter(times, temps, s=10, color='blue')
