@@ -1399,29 +1399,43 @@ class ChamberGUI(tk.Tk):
         if not filtered:
             return
         times, temps = zip(*filtered)
-        # 转换为列表，以便后续操作
         times = list(times)
         temps = list(temps)
 
-        # ===== 动态抽样（最多 1000 个点，但保留最近100个点不抽样）=====
+        # ===== 获取当前横坐标范围，只保留可见范围内的点 =====
+        x0, x1 = self.ax.get_xlim()
+        x0_dt = mdates.num2date(x0).replace(tzinfo=None)
+        x1_dt = mdates.num2date(x1).replace(tzinfo=None)
+        
+        # 过滤出当前横坐标范围内的点
+        visible = [(t, temp) for t, temp in zip(times, temps) if x0_dt <= t <= x1_dt]
+        if not visible:
+            self.data_scatter.set_offsets(numpy.empty((0, 2)))
+            self.canvas.draw_idle()
+            return
+        
+        times, temps = zip(*visible)
+        times = list(times)
+        temps = list(temps)
+
+        # ===== 动态抽样（保留最近10个点不抽样）=====
         max_points = max(500, int(self.canvas.get_tk_widget().winfo_width() / 2))
-        recent_keep = 100  # 保留最近100个点不抽样
+        recent_keep = 10  # 保留最近10个点不抽样
         n = len(times)
         
         if n > max_points and n > recent_keep:
-            # 历史数据：除了最近100个点之外的所有点
+            # 历史数据：除了最近10个点之外的所有点
             history_times = times[:-recent_keep]
             history_temps = temps[:-recent_keep]
-            # 最近数据：最后100个点
+            # 最近数据：最后10个点
             recent_times = times[-recent_keep:]
             recent_temps = temps[-recent_keep:]
             
             # 对历史数据进行抽样
             history_n = len(history_times)
-            history_max = max_points - recent_keep  # 历史数据最多显示的点数
+            history_max = max_points - recent_keep
             
             if history_n > history_max:
-                # 对历史数据抽样
                 idx = numpy.linspace(0, history_n - 1, history_max, dtype=int)
                 history_times = [history_times[i] for i in idx]
                 history_temps = [history_temps[i] for i in idx]
